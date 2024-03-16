@@ -6,10 +6,10 @@
 	<nav class="flex justify-between w-full">
 		<Anchor href="/" isBold={true}>Shani.</Anchor>
 		<div class="flex gap-2">
-			<Anchor href="/about">About</Anchor>
-			<Anchor href="/projects">Projects</Anchor>
-			<Anchor href="/skills">Skills</Anchor>
-			<Anchor href="/contact">Contact</Anchor>
+			<Anchor href="/work">work</Anchor>
+			<Anchor href="/projects">projects</Anchor>
+			<Anchor href="/skills">skills</Anchor>
+			<Anchor href="/contact">contact</Anchor>
 		</div>
 	</nav>
 </header>
