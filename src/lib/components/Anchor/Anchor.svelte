@@ -2,6 +2,7 @@
 	export let href = '';
 	export let target: '_self' | '_blank' = '_self';
 	export let isBold = false;
+	export let isBig = false;
 </script>
 
 <a
