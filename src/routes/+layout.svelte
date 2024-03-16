@@ -4,13 +4,15 @@
 	import Header from '$lib/components/Header/Header.svelte';
 </script>
 
-<main class="h-full bg-stone-950 text-stone-300">
-	<div class="w-full h-full mx-auto container pt-40 px-4 flex flex-col max-w-2xl">
+<main class="min-h-screen bg-stone-950 text-stone-300 flex">
+	<div
+		class="w-full mx-auto container md:pt-20 pt-10 px-4 flex flex-col max-w-2xl flex-grow flex-shrink"
+	>
 		<Header />
-		<div class="py-20 flex-grow flex-shrink">
+		<div class="py-10 flex-grow flex-shrink">
 			<slot />
 		</div>
-		<div class="">
+		<div class="mt-4">
 			<Footer />
 		</div>
 	</div>
