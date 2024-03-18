@@ -1,10 +1,18 @@
 <script>
 	import Anchor from '$components/Anchor/Anchor.svelte';
 	import WorkSection from './WorkSection.svelte';
+	import { DownloadIcon } from 'svelte-feather-icons';
+	import resume from '$assets/others/resume.pdf';
 </script>
 
 <section class="flex flex-col">
-	<h1 class="text-2xl font-medium tracking-tighter mb-8">my work</h1>
+	<h1 class="text-2xl font-medium tracking-tighter mb-8 flex items-center gap-2">
+		<span> my work </span>
+		<span
+			><Anchor href={resume} download="shani-resume.pdf"><DownloadIcon size="18" /></Anchor></span
+		>
+	</h1>
+
 	<p>On a mission to build products that people love and have some fun along the way!</p>
 	<WorkSection>
 		<svelte:fragment slot="heading">Axonista</svelte:fragment>

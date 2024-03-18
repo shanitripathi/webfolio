@@ -9,11 +9,11 @@
 </script>
 
 <header class="flex gap-6 md:items-center md:flex-row flex-col">
-	<div class="w-[120px] h-[120px] rounded-full overflow-hidden">
-		<img class="w-full h-full object-cover scale-150 object-top" src={Profile} alt="profile" />
+	<div class="w-[120px] h-[120px] rounded-full overflow-hidden border border-brightness">
+		<img class="w-full h-full object-cover" src={Profile} alt="profile" />
 	</div>
 	<div class="text-xl">
-		<div>
+		<div class="whitespace-pre-line">
 			<span><Anchor isBold={true} sizeClass="text-xl">hey, I'm shani 👋</Anchor></span> I'm a web developer
 			and tech enthusiast.
 		</div>
