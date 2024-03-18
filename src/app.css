@@ -2,13 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-body{
-    min-height: 100vh;
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-Black.woff2') format('woff2');
+	font-weight: 900;
+	/* Black */
 }
 
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-Bold.woff2') format('woff2');
+	font-weight: bold;
+	/* Bold */
+}
 
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-Light.woff2') format('woff2');
+	font-weight: 300;
+	/* Light */
+}
 
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-Medium.woff2') format('woff2');
+	font-weight: 500;
+	/* Medium */
+}
 
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-Regular.woff2') format('woff2');
+	font-weight: normal;
+	/* Regular */
+}
 
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	/* SemiBold */
+}
+
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-Thin.woff2') format('woff2');
+	font-weight: 100;
+	/* Thin */
+}
+
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-UltraBlack.woff2') format('woff2');
+	font-weight: 1000;
+	/* UltraBlack */
+}
+
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/Geist-UltraLight.woff2') format('woff2');
+	font-weight: 200;
+	/* UltraLight */
+}
+
+@font-face {
+	font-family: 'geist';
+	src: url('./lib/assets/fonts/Geist/GeistVariableVF.woff2') format('woff2');
+	/* Variable Font */
+}
+
+/* Define your light and dark colors here */
+:root {
+	--color-light-brightness: #3f3f46;
+	--color-light-midtone: #27272a;
+	--color-light-shadow: #27272a;
+	--color-light-main: #f5f5f4;
+	--color-dark-brightness: #e5e5e5;
+	--color-dark-midtone: #d4d4d4;
+	--color-dark-shadow: #a3a3a3;
+	--color-dark-main: #0c0a09;
+}
+
+:root {
+	--color-brightness: var(--color-light-brightness);
+	--color-midtone: var(--color-light-midtone);
+	--color-shadow: var(--color-light-shadow);
+	--color-main: var(--color-light-main);
+}
+
+[data-theme='dark'] {
+	--color-brightness: var(--color-dark-brightness);
+	--color-midtone: var(--color-dark-midtone);
+	--color-shadow: var(--color-dark-shadow);
+	--color-main: var(--color-dark-main);
+}
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	min-height: 100vh;
+	font-family: 'geist', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	/* Use the custom font as the default font */
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #2f2f2f;
+	/* Dark background color for the track (or "groove") */
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+	/* Darker color for the handle (or "thumb") */
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+	/* Even darker color for the handle on hover */
+}
+
+/* For Firefox */
+body {
+	scrollbar-width: thin;
+	scrollbar-color: #888 #2f2f2f;
+	user-select: none;
+}
+
+p {
+	line-height: 1.7rem !important;
+}
