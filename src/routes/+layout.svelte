@@ -32,9 +32,3 @@
 		</div>
 	</div>
 </main>
-
-<!-- <style lang="postcss">
-	:global(body) {
-		@apply bg-stone-950;
-	}
-</style> -->
