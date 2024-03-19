@@ -1,3 +1,5 @@
+@import 'nprogress/nprogress.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -136,4 +138,8 @@ body {
 
 p {
 	line-height: 1.7rem !important;
+}
+
+#nprogress .bar {
+	background-color: var(--color-shadow);
 }

@@ -4,8 +4,11 @@
 	import { InstagramIcon, LinkedinIcon, MailIcon, GithubIcon } from 'svelte-feather-icons';
 	import { ageCalculator } from '$lib/helpers/ageCalculator';
 	import constants from '$helpers/constants';
+	import ImageGrid from '$components/ImageGrid/ImageGrid.svelte';
+	import { unsplashImageStore } from '$stores/unsplashImageStore';
 
 	const age = ageCalculator(new Date('1996-01-07'));
+	$: unsplashPhotos = $unsplashImageStore ? $unsplashImageStore.slice(0, 6) : $unsplashImageStore;
 </script>
 
 <header class="flex gap-6 md:items-center md:flex-row flex-col">
@@ -52,3 +55,9 @@
 		>. Let's build something awesome together! 🌲
 	</p>
 </section>
+
+{#if unsplashPhotos && unsplashPhotos.length > 0}
+	<section class="mt-6">
+		<ImageGrid images={unsplashPhotos} />
+	</section>
+{/if}
