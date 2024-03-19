@@ -101,6 +101,7 @@
 
 html {
 	overflow-y: scroll;
+	background-color: var(--color-main);
 }
 
 body {
