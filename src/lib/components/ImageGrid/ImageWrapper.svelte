@@ -51,7 +51,7 @@
 		alt={imageDetail?.alt_description}
 	/>
 	{#if shouldShowCredit}
-		<!-- Image Credit -->
+		<!-- Image Credit for Unsplash Images -->
 		<div
 			class="absolute bottom-0 w-full p-2 left-0 text-[10px] bg-gradient-to-t from-main to-transparent"
 		>
