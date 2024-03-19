@@ -20,7 +20,7 @@ export const load: LayoutServerLoad = async (input) => {
 		}
 		unsplashPhotos = await response.json();
 	} catch (e) {
-		console.error('error fetching unsplash images', e);
+		console.error('error fetching unsplash images ', e);
 	}
 
 	return {
