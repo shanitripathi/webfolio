@@ -1,3 +1,5 @@
+@import 'nprogress/nprogress.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -99,6 +101,7 @@
 
 html {
 	overflow-y: scroll;
+	background-color: var(--color-main);
 }
 
 body {
@@ -136,4 +139,8 @@ body {
 
 p {
 	line-height: 1.7rem !important;
+}
+
+#nprogress .bar {
+	background-color: var(--color-shadow);
 }

@@ -3,13 +3,24 @@
 
 	import Footer from '$lib/components/Footer/Footer.svelte';
 	import Header from '$lib/components/Header/Header.svelte';
+	import NProgress from 'nprogress';
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 	import { isDarkTheme } from '$stores/theme';
+	import { navigating } from '$app/stores';
+	import { browser } from '$app/environment';
 
 	export let data: PageData;
-	$: theme = data.theme;
 
+	NProgress.configure({ showSpinner: false, speed: 400 });
+
+	$: if (browser && $navigating) {
+		NProgress.start();
+	} else {
+		NProgress.done();
+	}
+
+	$: theme = data.theme;
 	$: $isDarkTheme = theme === 'dark';
 
 	onMount(() => {

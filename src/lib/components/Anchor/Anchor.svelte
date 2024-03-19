@@ -3,6 +3,7 @@
 	export let target: '_blank' | '' = '';
 	export let isBold = false;
 	export let sizeClass:
+		| `text-[${5 | 6 | 7 | 8 | 9 | 10}px]`
 		| `text-${2 | 3 | 4 | 5 | 6}xl`
 		| `text-${'sm' | 'lg' | 'md' | 'xl' | 'base'}` = 'text-sm';
 	export let optionalClass = '';
