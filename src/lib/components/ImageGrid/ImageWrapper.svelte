@@ -3,6 +3,7 @@
 	import Image from '$components/Image.svelte';
 	import type { UnsplashPhoto } from '$lib/types/unsplashResponseTypes';
 	import { onDestroy } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	export let imageDetail: UnsplashPhoto;
 
@@ -53,6 +54,7 @@
 	{#if shouldShowCredit}
 		<!-- Image Credit for Unsplash Images -->
 		<div
+			transition:fade={{ duration: 200 }}
 			class="absolute bottom-0 w-full p-2 left-0 text-[10px] bg-gradient-to-t from-main to-transparent"
 		>
 			photo by <Anchor
