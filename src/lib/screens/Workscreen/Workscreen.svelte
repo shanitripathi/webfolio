@@ -6,7 +6,7 @@
 </script>
 
 <section class="flex flex-col">
-	<h1 class="text-2xl font-medium tracking-tighter mb-8 flex items-center gap-2">
+	<h1 class="flex items-center gap-2 mb-8 text-2xl font-medium tracking-tighter">
 		<span> my work </span>
 		<span
 			><Anchor href={resume} download="shani-resume.pdf"><DownloadIcon size="18" /></Anchor></span
@@ -52,7 +52,7 @@
 </section>
 
 <section>
-	<h1 class="text-2xl font-medium tracking-tighter my-10">personal projects</h1>
+	<h1 class="my-10 text-2xl font-medium tracking-tighter">personal projects</h1>
 	<p>Projects that I've worked on in my free time, just for fun and learning!</p>
 	<div class="md:ml-4">
 		<hr class="my-6 border-neutral-800" />
@@ -65,6 +65,11 @@
 			<li>
 				<Anchor isBold={true} target="_blank" href="https://tender-kare-87b4ca.netlify.app/"
 					>Capture</Anchor
+				>
+			</li>
+			<li>
+				<Anchor isBold={true} target="_blank" href="https://axonista-weather-app.vercel.app/"
+					>Weather App</Anchor
 				>
 			</li>
 			<li>
@@ -82,17 +87,16 @@
 				>
 			</li>
 			<li>
-				<Anchor
-					isBold={true}
-					target="_blank"
-					href="https://shanitripathi.github.io/assignment5/index.html">Portfolio</Anchor
+				<Anchor isBold={true} target="_blank" href="https://shanitripathi.github.io"
+					>Portfolio</Anchor
 				>
 			</li>
-			<li>
+
+			<!-- <li>
 				<Anchor isBold={true} target="_blank" href="https://peaceful-meninsky-20aa98.netlify.app/"
 					>Gaming Hub</Anchor
 				>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 </section>
