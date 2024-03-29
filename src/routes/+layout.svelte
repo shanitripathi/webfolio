@@ -30,12 +30,12 @@
 	});
 </script>
 
-<main class="min-h-screen bg-main text-midtone flex">
+<main class="flex min-h-screen bg-main text-midtone">
 	<div
-		class="w-full mx-auto container md:pt-20 pt-10 px-6 flex flex-col max-w-2xl flex-grow flex-shrink"
+		class="container mx-auto flex w-full max-w-2xl flex-shrink flex-grow flex-col px-6 pt-10 md:pt-20"
 	>
 		<Header />
-		<div class="py-10 flex-grow flex-shrink">
+		<div class="flex-shrink flex-grow py-10">
 			<slot />
 		</div>
 		<div class="mt-4">

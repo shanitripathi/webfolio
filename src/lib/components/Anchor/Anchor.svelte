@@ -15,12 +15,16 @@
 
 	let shouldShowTooltip = false;
 
-	const showTooltip = () => {
-		shouldShowTooltip = true;
+	const showTooltip = (ev: PointerEvent) => {
+		if (ev.pointerType === 'mouse') {
+			shouldShowTooltip = true;
+		}
 	};
 
-	const hideTooltip = () => {
-		shouldShowTooltip = false;
+	const hideTooltip = (ev: PointerEvent) => {
+		if (ev.pointerType === 'mouse') {
+			shouldShowTooltip = false;
+		}
 	};
 </script>
 

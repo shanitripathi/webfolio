@@ -3,7 +3,7 @@
 </script>
 
 <header class="w-full text-shadow">
-	<nav class="flex justify-between w-full">
+	<nav class="flex w-full justify-between">
 		<Anchor href="/" isBold={true} tooltipText="my bio">Shani.</Anchor>
 		<div class="flex gap-2">
 			<Anchor href="/work" tooltipText="my work history">work</Anchor>

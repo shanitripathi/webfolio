@@ -13,7 +13,7 @@
 
 <button
 	on:pointerup={handleToggle}
-	class="w-8 h-4 rounded-lg overflow-hidden border-midtone border relative flex justify-between items-center px-[2px]"
+	class="relative flex h-4 w-8 items-center justify-between overflow-hidden rounded-lg border border-midtone px-[2px]"
 >
 	<span class=""><MoonIcon size="10" /></span>
 	<span class=""><SunIcon size="10" /></span>

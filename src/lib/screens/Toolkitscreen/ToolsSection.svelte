@@ -3,10 +3,10 @@
 </script>
 
 {#if items.length > 0}
-	<section class="last:mb-0 mb-8">
-		<h1 class="text-2xl font-medium tracking-tighter mb-2"><slot name="header" /></h1>
+	<section class="mb-8 last:mb-0">
+		<h1 class="mb-2 text-2xl font-medium tracking-tighter"><slot name="header" /></h1>
 
-		<ul class="text-sm md:ml-2 space-y-1">
+		<ul class="space-y-1 text-sm md:ml-2">
 			{#each items as item}
 				<li>
 					{item}

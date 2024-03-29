@@ -6,7 +6,7 @@
 </script>
 
 <section class="flex flex-col">
-	<h1 class="flex items-center gap-2 mb-8 text-2xl font-medium tracking-tighter">
+	<h1 class="mb-8 flex items-center gap-2 text-2xl font-medium tracking-tighter">
 		<span> my work </span>
 		<span
 			><Anchor href={resume} tooltipText="download my cv" download="shani-resume.pdf"

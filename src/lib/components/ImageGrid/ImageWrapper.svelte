@@ -43,7 +43,7 @@
 	on:pointerover={showCredit}
 	on:pointerleave={hideCredit}
 	on:pointerup={showCredit}
-	class={`[&:nth-child(1)]:row-span-2 [&:nth-child(3)]:row-span-2 md:[&:nth-child(1)]:row-span-2 md:[&:nth-child(3)]:row-span-2 md:[&:nth-child(4)]:row-span-2 bg-shadow  rounded-md relative overflow-hidden`}
+	class={`relative overflow-hidden rounded-md bg-shadow [&:nth-child(1)]:row-span-2 md:[&:nth-child(1)]:row-span-2  [&:nth-child(3)]:row-span-2 md:[&:nth-child(3)]:row-span-2 md:[&:nth-child(4)]:row-span-2`}
 >
 	<Image
 		src={imageDetail?.urls?.regular}
@@ -55,7 +55,7 @@
 		<!-- Image Credit for Unsplash Images -->
 		<div
 			transition:fade={{ duration: 200 }}
-			class="absolute bottom-0 w-full p-2 left-0 text-[10px] bg-gradient-to-t from-main to-transparent"
+			class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-main to-transparent p-2 text-[10px]"
 		>
 			photo by <Anchor
 				href={`https://unsplash.com/@${imageDetail?.user?.username}?utm_source=shani_portfolio&utm_medium=referral`}

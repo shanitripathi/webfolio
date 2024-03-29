@@ -8,7 +8,7 @@
 </script>
 
 <img
-	class="w-full h-full object-cover absolute"
+	class="absolute h-full w-full object-cover"
 	{alt}
 	sizes="(max-width: 600px) 100vw, 50vw"
 	srcset="{srcSmall} 600w, {srcRegular} 1400w"
