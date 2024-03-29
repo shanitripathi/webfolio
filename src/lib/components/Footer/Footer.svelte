@@ -4,7 +4,7 @@
 	const currentYear = new Date().getFullYear();
 </script>
 
-<footer class="flex justify-between items-center pb-10">
-	<h6 class="font-bold text-sm">Shani Tripathi &copy; {currentYear}</h6>
+<footer class="flex items-center justify-between pb-10">
+	<h6 class="text-sm font-bold">Shani Tripathi &copy; {currentYear}</h6>
 	<ThemeButton />
 </footer>

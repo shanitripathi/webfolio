@@ -11,9 +11,9 @@
 	$: unsplashPhotos = $unsplashImageStore ? $unsplashImageStore.slice(0, 6) : $unsplashImageStore;
 </script>
 
-<header class="flex gap-6 md:items-center md:flex-row flex-col">
-	<div class="w-[120px] h-[120px] rounded-full overflow-hidden border border-brightness">
-		<img class="w-full h-full object-cover" src={Profile} alt="profile" />
+<header class="flex flex-col gap-6 md:flex-row md:items-center">
+	<div class="h-[120px] w-[120px] overflow-hidden rounded-full border border-brightness">
+		<img class="h-full w-full object-cover" src={Profile} alt="profile" />
 	</div>
 	<div class="text-xl">
 		<div class="whitespace-pre-line">
@@ -21,18 +21,24 @@
 			and tech enthusiast.
 		</div>
 		<div class="flex gap-3 pt-4">
-			<Anchor href={constants.github} target="_blank"><GithubIcon size="20" /></Anchor>
+			<Anchor href={constants.github} target="_blank" tooltipText="my github"
+				><GithubIcon size="20" /></Anchor
+			>
 
-			<Anchor href={constants.linkedin} target="_blank"><LinkedinIcon size="20" /></Anchor>
+			<Anchor href={constants.linkedin} target="_blank" tooltipText="my linkedin"
+				><LinkedinIcon size="20" /></Anchor
+			>
 
-			<Anchor target="_blank" href={constants.instagram}><InstagramIcon size="20" /></Anchor>
+			<Anchor target="_blank" href={constants.instagram} tooltipText="my instagram"
+				><InstagramIcon size="20" /></Anchor
+			>
 
-			<Anchor href={constants.mail}><MailIcon size="20" /></Anchor>
+			<Anchor href={constants.mail} tooltipText="send me an email"><MailIcon size="20" /></Anchor>
 		</div>
 	</div>
 </header>
 
-<section class="flex flex-col gap-3 mt-8 text-midtone text-sm">
+<section class="mt-8 flex flex-col gap-3 text-sm text-midtone">
 	<p>
 		Born {age} years ago, I develop websites 💻 and when I'm not doing that, you'll often find me behind
 		the lens, capturing folks around me 📸.

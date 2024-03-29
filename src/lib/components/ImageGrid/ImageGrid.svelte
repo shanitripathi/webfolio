@@ -7,7 +7,7 @@
 
 {#if images && images.length > 0}
 	<section>
-		<div class="grid grid-cols-2 md:grid-cols-3 gap-4 h-[600px]">
+		<div class="grid h-[600px] grid-cols-2 gap-4 md:grid-cols-3">
 			{#each images as image, index (index)}
 				<ImageWrapper imageDetail={image} />
 			{/each}
