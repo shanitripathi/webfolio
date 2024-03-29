@@ -9,7 +9,9 @@
 	<h1 class="flex items-center gap-2 mb-8 text-2xl font-medium tracking-tighter">
 		<span> my work </span>
 		<span
-			><Anchor href={resume} download="shani-resume.pdf"><DownloadIcon size="18" /></Anchor></span
+			><Anchor href={resume} tooltipText="download my cv" download="shani-resume.pdf"
+				><DownloadIcon size="18" /></Anchor
+			></span
 		>
 	</h1>
 
