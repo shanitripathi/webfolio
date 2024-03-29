@@ -13,6 +13,7 @@ const config = {
 		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
+		prerender: {}, // revisit later
 		alias: {
 			$components: path.resolve('./src/lib/components'),
 			$stores: path.resolve('./src/lib/stores'),

@@ -16,7 +16,7 @@
 	<meta name="author" content="Shani Tripathi" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content="URL_TO_IMAGE" />
+	<!-- <meta property="og:image" content="URL_TO_IMAGE" /> -->
 	<!-- <meta property="og:url" content="URL_TO_YOUR_PORTFOLIO" />
 	<meta name="twitter:card" content="summary_large_image" /> -->
 </svelte:head>
