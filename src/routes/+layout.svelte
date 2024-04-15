@@ -9,6 +9,7 @@
 	import { isDarkTheme } from '$stores/theme';
 	import { navigating } from '$app/stores';
 	import { browser } from '$app/environment';
+	import Gtm from '$components/Gtm.svelte';
 
 	export let data: PageData;
 
@@ -28,7 +29,11 @@
 			document.documentElement.setAttribute('data-theme', theme);
 		}
 	});
+
+	const id = import.meta.env.VITE_GA_ID;
 </script>
+
+<Gtm {id} />
 
 <main class="flex min-h-screen bg-main text-midtone">
 	<div
