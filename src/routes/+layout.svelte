@@ -10,6 +10,7 @@
 	import { navigating } from '$app/stores';
 	import { browser } from '$app/environment';
 	import Gtm from '$components/Gtm.svelte';
+	import { sendGaEvent } from '$helpers/analyticsHelper';
 
 	export let data: PageData;
 
@@ -28,6 +29,7 @@
 		if (theme) {
 			document.documentElement.setAttribute('data-theme', theme);
 		}
+		sendGaEvent({ event_name: 'page_view' });
 	});
 
 	const id = import.meta.env.VITE_GA_ID;

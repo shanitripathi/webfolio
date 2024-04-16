@@ -10,6 +10,7 @@ const url = `${unsplashUri}/users/${username}/photos?client_id=${accessKey}`;
 export const load: LayoutServerLoad = async (input) => {
 	const cookies = cookie.parse(input.request.headers.get('cookie') || '');
 	const themeCookie = cookies['theme'] || 'dark';
+	const clientId = cookies['clientId'];
 
 	let unsplashPhotos: UnsplashUsersPhotos = undefined;
 
@@ -25,6 +26,7 @@ export const load: LayoutServerLoad = async (input) => {
 
 	return {
 		theme: themeCookie,
-		unsplashPhotos
+		unsplashPhotos,
+		clientId: clientId || ''
 	};
 };

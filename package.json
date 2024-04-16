@@ -41,6 +41,7 @@
 		"ts-node": "^10.9.2",
 		"tslib": "^2.4.1",
 		"typescript": "^5.4.3",
+		"uid": "^2.0.2",
 		"vite": "^5.2.6"
 	},
 	"type": "module"
