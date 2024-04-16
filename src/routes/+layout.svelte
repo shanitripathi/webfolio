@@ -29,6 +29,7 @@
 		if (theme) {
 			document.documentElement.setAttribute('data-theme', theme);
 		}
+		// send page view event
 		sendGaEvent({ event_name: 'page_view' });
 	});
 
