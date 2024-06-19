@@ -1,8 +1,9 @@
 <script>
 	// import Profile from '$assets/images/profile-bans.jpg';
 
-	export let title = 'Shani Tripathi';
-	export let description = 'Developer, photographer, and a person';
+	export let title = 'Shani Tripathi - Developer, Photographer, and a Person';
+	export let description =
+		"Hey, this is Shani Tripathi's portfolio - Developer, photographer, and a person";
 </script>
 
 <svelte:head>
@@ -11,7 +12,7 @@
 	<meta name="description" content={description} />
 	<meta
 		name="keywords"
-		content="portfolio, software developer, web developer, frontend developer, software engineer, programming"
+		content="shani tripathi, portfolio, shani tripathi portfolio, software developer, web developer, frontend developer, software engineer, programming"
 	/>
 	<meta name="author" content="Shani Tripathi" />
 	<meta property="og:title" content={title} />

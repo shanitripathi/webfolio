@@ -9,5 +9,5 @@
 	$: $unsplashImageStore = data.unsplashPhotos;
 </script>
 
-<MetaTags title="Shani Tripathi" description="Developer, photographer, and a person." />
+<MetaTags />
 <Homescreen />
