@@ -27,7 +27,7 @@
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
-<div class="flex items-center justify-center gap-2 p-2 overflow-hidden rounded-md">
+<div class="flex items-center justify-center gap-2 overflow-hidden rounded-md p-2">
 	<button
 		on:pointerup={() => {
 			dispatch('handlePlayPause');

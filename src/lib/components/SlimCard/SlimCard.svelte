@@ -6,7 +6,7 @@
 
 <a
 	{href}
-	class="w-full p-2 text-sm font-normal tracking-normal rounded-md bg-neutral-800 text-neutral-300 hover:bg-neutral-700"
+	class="w-full rounded-md bg-neutral-800 p-2 text-sm font-normal tracking-normal text-neutral-300 hover:bg-neutral-700"
 >
 	<h6>{title}</h6>
 	<span class="font-bold">
