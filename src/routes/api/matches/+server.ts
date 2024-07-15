@@ -6,7 +6,6 @@ const { VITE_FOOTBALL_RAPID_API_HOST, VITE_FOOTBALL_RAPID_API_URL, VITE_FOOTBALL
 const apiUrl = VITE_FOOTBALL_RAPID_API_URL;
 
 export async function GET(req: Request, res: Response) {
-	await new Promise((resolve) => setTimeout(resolve, 3000));
 	try {
 		const response = await fetch(apiUrl, {
 			headers: {
@@ -15,7 +14,7 @@ export async function GET(req: Request, res: Response) {
 			}
 		});
 		const data = (await response.json()) as Match[] | undefined;
-		console.log('Hello, world!', data);
+
 		if (data && data?.length > 0) {
 			// only return live matches
 			const liveMatches = data.filter((match) => match.status.includes('Live'));

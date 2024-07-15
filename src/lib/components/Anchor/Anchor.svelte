@@ -40,8 +40,8 @@
 	{#if tooltipText && shouldShowTooltip}
 		<span
 			transition:fly={{ y: 5, duration: 200 }}
-			class="{`absolute left-[50%] inline-block -translate-x-[50%] whitespace-nowrap rounded-sm bg-neutral-800 px-1 text-[10px] font-normal tracking-normal text-neutral-300 ${tooltipTop ? 'bottom-[110%]' : 'top-[110%]'}`}}"
-			>{tooltipText}}</span
+			class={`absolute left-[50%] inline-block -translate-x-[50%] whitespace-nowrap rounded-sm bg-neutral-800 px-1 text-[10px] font-normal tracking-normal text-neutral-300 ${tooltipTop ? 'bottom-[110%]' : 'top-[110%]'}`}
+			>{tooltipText}</span
 		>
 	{/if}
 </a>
