@@ -10,9 +10,9 @@
 	$: fallbackMessage = $isLoadingDataStore ? 'Loading...' : 'No live matches available';
 </script>
 
-<div class="flex flex-col items-center justify-center w-full h-full">
+<div class="flex h-full w-full flex-col items-center justify-center">
 	{#if liveMatches && liveMatches.length > 0}
-		<div class="flex flex-col w-full gap-2">
+		<div class="flex w-full flex-col gap-2">
 			{#each liveMatches as match}
 				<SlimCard
 					title={`${match.home_name} - ${match.away_name}`}

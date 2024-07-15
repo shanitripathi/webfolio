@@ -17,9 +17,9 @@
 	}
 </script>
 
-<div class="flex flex-col items-center justify-center h-full">
+<div class="flex h-full flex-col items-center justify-center">
 	{#if streamUri}
-		<div class="relative w-full overflow-hidden rounded-md aspect-video bg-neutral-800">
+		<div class="relative aspect-video w-full overflow-hidden rounded-md bg-neutral-800">
 			<VideoPlayer src={streamUri} isNowPlaying={false} optionalClass={'absolute'} />
 		</div>
 	{:else}
