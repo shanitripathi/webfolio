@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 
-	export let id: string;
+	export let id: string = '';
 </script>
 
 <svelte:head>
-	{#if browser}
+	{#if browser && id}
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id={id}"></script>
+
+		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id={id}"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
@@ -16,6 +17,6 @@
 			gtag('js', new Date());
 
 			gtag('config', id);
-		</script>
+		</script> -->
 	{/if}
 </svelte:head>

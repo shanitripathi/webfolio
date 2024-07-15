@@ -11,6 +11,7 @@
 	import { browser } from '$app/environment';
 	import Gtm from '$components/Gtm.svelte';
 	import { sendGaEvent } from '$helpers/analyticsHelper';
+	import { isAndroid, isFirefox, isIos, isMac, isSafari } from '$stores/platformIdentifierStore';
 
 	export let data: PageData;
 
@@ -31,6 +32,13 @@
 		}
 		// send page view event
 		sendGaEvent({ event_name: 'page_view' });
+
+		// @ts-ignore
+		$isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+		$isMac = /Mac/.test(navigator.userAgent);
+		$isFirefox = /Firefox/.test(navigator.userAgent);
+		$isAndroid = navigator.userAgent.toLowerCase().indexOf('android') > -1;
+		$isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 	});
 
 	const id = import.meta.env.VITE_GA_ID;

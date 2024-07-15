@@ -3,6 +3,6 @@
 	import Workscreen from '$screens/Workscreen/Workscreen.svelte';
 </script>
 
-<MetaTags  />
+<MetaTags />
 
 <Workscreen />

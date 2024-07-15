@@ -11,14 +11,14 @@
 	let hideTimeoutId: NodeJS.Timeout;
 
 	const handleTouchCreditHideTimeout = () => {
-		hideTimeoutId && clearTimeout(hideTimeoutId);
+		if (hideTimeoutId) clearTimeout(hideTimeoutId);
 		hideTimeoutId = setTimeout(() => {
 			shouldShowCredit = false;
 		}, 3000);
 	};
 
 	onDestroy(() => {
-		hideTimeoutId && clearTimeout(hideTimeoutId);
+		if (hideTimeoutId) clearTimeout(hideTimeoutId);
 	});
 
 	const showCredit = (ev: PointerEvent) => {
@@ -43,31 +43,31 @@
 	on:pointerover={showCredit}
 	on:pointerleave={hideCredit}
 	on:pointerup={showCredit}
-	class={`relative overflow-hidden rounded-md bg-shadow [&:nth-child(1)]:row-span-2 md:[&:nth-child(1)]:row-span-2  [&:nth-child(3)]:row-span-2 md:[&:nth-child(3)]:row-span-2 md:[&:nth-child(4)]:row-span-2`}
+	class="relative overflow-hidden rounded-md bg-shadow [&:nth-child(1)]:row-span-2 md:[&:nth-child(1)]:row-span-2 [&:nth-child(3)]:row-span-2 md:[&:nth-child(3)]:row-span-2 md:[&:nth-child(4)]:row-span-2"
 >
 	<Image
 		src={imageDetail?.urls?.regular}
 		srcSmall={imageDetail?.urls?.small}
 		srcRegular={imageDetail?.urls?.regular}
 		alt={imageDetail?.alt_description}
-	/>
-	{#if shouldShowCredit}
-		<!-- Image Credit for Unsplash Images -->
+	></Image>
+	{#if shouldShowCredit}<!-- Image Credit for Unsplash Images -->
 		<div
 			transition:fade={{ duration: 200 }}
 			class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-main to-transparent p-2 text-[10px]"
 		>
 			photo by <Anchor
 				href={`https://unsplash.com/@${imageDetail?.user?.username}?utm_source=shani_portfolio&utm_medium=referral`}
-				sizeClass={'text-[10px]'}
+				sizeClass="text-[10px]"
 				isBold={true}
 				target="_blank"
 			>
 				{imageDetail?.user?.first_name}
 			</Anchor>
-			on <Anchor
+			on
+			<Anchor
 				href={`https://unsplash.com/photos/${imageDetail?.id}?utm_source=shani_portfolio&utm_medium=referral`}
-				sizeClass={'text-[10px]'}
+				sizeClass="text-[10px]"
 				isBold={true}
 				target="_blank">unsplash</Anchor
 			>

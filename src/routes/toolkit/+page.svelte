@@ -3,6 +3,6 @@
 	import Toolkitscreen from '$screens/Toolkitscreen/Toolkitscreen.svelte';
 </script>
 
-<MetaTags  />
+<MetaTags />
 
 <Toolkitscreen />
