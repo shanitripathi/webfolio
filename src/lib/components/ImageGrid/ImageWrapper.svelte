@@ -11,14 +11,14 @@
 	let hideTimeoutId: NodeJS.Timeout;
 
 	const handleTouchCreditHideTimeout = () => {
-		if (hideTimeoutId) clearTimeout(hideTimeoutId);
+		hideTimeoutId && clearTimeout(hideTimeoutId);
 		hideTimeoutId = setTimeout(() => {
 			shouldShowCredit = false;
 		}, 3000);
 	};
 
 	onDestroy(() => {
-		if (hideTimeoutId) clearTimeout(hideTimeoutId);
+		hideTimeoutId && clearTimeout(hideTimeoutId);
 	});
 
 	const showCredit = (ev: PointerEvent) => {
@@ -51,26 +51,28 @@
 		srcRegular={imageDetail?.urls?.regular}
 		alt={imageDetail?.alt_description}
 	></Image>
-	{#if shouldShowCredit}<!-- Image Credit for Unsplash Images -->
-		<div
-			transition:fade={{ duration: 200 }}
-			class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-main to-transparent p-2 text-[10px]"
-		>
-			photo by <Anchor
-				href={`https://unsplash.com/@${imageDetail?.user?.username}?utm_source=shani_portfolio&utm_medium=referral`}
-				sizeClass="text-[10px]"
-				isBold={true}
-				target="_blank"
+	<div class="absolute bottom-0 left-0 w-full text-[10px]">
+		{#if shouldShowCredit}
+			<div
+				transition:fade={{ duration: 200 }}
+				class="p-2 bg-gradient-to-t from-main to-transparent"
 			>
-				{imageDetail?.user?.first_name}
-			</Anchor>
-			on
-			<Anchor
-				href={`https://unsplash.com/photos/${imageDetail?.id}?utm_source=shani_portfolio&utm_medium=referral`}
-				sizeClass="text-[10px]"
-				isBold={true}
-				target="_blank">unsplash</Anchor
-			>
-		</div>
-	{/if}
+				photo by <Anchor
+					href={`https://unsplash.com/@${imageDetail?.user?.username}?utm_source=shani_portfolio&utm_medium=referral`}
+					sizeClass="text-[10px]"
+					isBold={true}
+					target="_blank"
+				>
+					{imageDetail?.user?.first_name}
+				</Anchor>
+				on
+				<Anchor
+					href={`https://unsplash.com/photos/${imageDetail?.id}?utm_source=shani_portfolio&utm_medium=referral`}
+					sizeClass="text-[10px]"
+					isBold={true}
+					target="_blank">unsplash</Anchor
+				>
+			</div>
+		{/if}
+	</div>
 </div>
