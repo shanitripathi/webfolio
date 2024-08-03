@@ -1,5 +1,21 @@
 import cookie from 'cookie';
 import { uid } from 'uid';
+import mongoose from 'mongoose';
+
+const { VITE_DB_CONNNECTION_STRING, VITE_DB_USERNAME, VITE_DB_PASSWORD } = import.meta.env;
+
+const mongoUri = VITE_DB_CONNNECTION_STRING.replace('<password>', VITE_DB_PASSWORD);
+
+const mongooseConnect = async () => {
+	try {
+		await mongoose.connect(mongoUri);
+		console.log('Connected to MongoDB');
+	} catch (error) {
+		console.error('Error connecting to MongoDB:', error);
+	}
+};
+
+mongooseConnect();
 
 const setCookie = (response: Response, name: string, value: string) => {
 	response.headers.append(
