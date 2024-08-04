@@ -8,14 +8,17 @@
 	import { onMount } from 'svelte';
 	import { isDarkTheme } from '$stores/theme';
 	import { navigating } from '$app/stores';
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import Gtm from '$components/Gtm.svelte';
 	import { sendGaEvent } from '$helpers/analyticsHelper';
 	import { isAndroid, isFirefox, isIos, isMac, isSafari } from '$stores/platformIdentifierStore';
+	import { inject } from '@vercel/analytics';
 
 	export let data: PageData;
 
 	NProgress.configure({ showSpinner: false, speed: 400 });
+
+	inject({ mode: dev ? 'development' : 'production' });
 
 	$: if (browser && $navigating) {
 		NProgress.start();
@@ -48,10 +51,10 @@
 
 <main class="flex min-h-screen bg-main text-midtone">
 	<div
-		class="container mx-auto flex w-full max-w-2xl flex-shrink flex-grow flex-col px-6 pt-10 md:pt-20"
+		class="container flex flex-col flex-grow flex-shrink w-full max-w-2xl px-6 pt-10 mx-auto md:pt-20"
 	>
 		<Header />
-		<div class="flex-shrink flex-grow py-10">
+		<div class="flex-grow flex-shrink py-10">
 			<slot />
 		</div>
 		<div class="mt-4">
