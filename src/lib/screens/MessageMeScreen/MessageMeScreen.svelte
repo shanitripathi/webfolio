@@ -51,26 +51,27 @@
 	};
 </script>
 
-<section class="flex h-full items-center justify-center">
+<section class="flex items-center justify-center h-full">
 	{#if isMessageSent}
-		<p transition:fade={{ duration: 200 }} class="text-center text-sm text-brightness">
+		<p transition:fade={{ duration: 200 }} class="text-sm text-center text-brightness">
 			📬 Message sent! 🚀 Thanks for the note! 😎 Nothing too harsh, I hope! 😅 Keep smiling! 😊
 		</p>
 	{:else}
-		<div class="flex h-full flex-col items-center justify-center">
-			<p class="mb-10 text-center text-sm">
+		<div class="flex flex-col items-center justify-center h-full">
+			<p class="mb-10 text-sm text-center">
 				💬 Send an anonymous message! 🕵️‍♂️ Share thoughts, ideas, jokes, or even what you don’t like
 				about me! 🤫
 			</p>
 
 			<div class="mx-auto h-[150px] w-full">
-				<div class="relative h-full w-full">
+				<div class="relative w-full h-full">
 					<Textarea
 						shouldFocus={true}
 						name="messageMe"
 						id="messageMe"
-						placeholder="start typing here ✍🏻"
+						placeholder={isSending ? 'start typing here ✍🏻' : 'sending your message..... 📨'}
 						maxLength={constants.messageLength}
+						isLoading={isSending}
 						bind:value={message}
 						on:enter={sendMessage}
 					></Textarea>

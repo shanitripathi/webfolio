@@ -8,6 +8,7 @@
 	export let shouldFocus = false;
 	export let maxLength = 1000;
 	export let value = '';
+	export let isLoading = false;
 
 	const dispatch = createEventDispatcher();
 
@@ -31,7 +32,9 @@
 	bind:this={ref}
 	on:keydown={handleKeydown}
 	bind:value
+	disabled={isLoading}
 	class="relative h-full w-full resize-none rounded-md border-[24px] border-transparent bg-neutral-800 text-base text-neutral-200 outline-none"
+	class:animate-pulse={isLoading}
 	{placeholder}
 	{name}
 	{id}
