@@ -40,7 +40,7 @@
 	};
 </script>
 
-<main class="flex flex-col items-center justify-center h-full">
+<main class="flex h-full flex-col items-center justify-center">
 	{#if isValidSession}
 		<slot />
 	{:else}
