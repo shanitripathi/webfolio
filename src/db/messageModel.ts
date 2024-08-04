@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
+import constants from '$helpers/constants';
 
 const messageSchema = new mongoose.Schema(
 	{
 		message: {
 			type: String,
 			required: true,
-			maxLength: 500,
+			maxLength: constants.messageLength,
 			trim: true,
 			validate: {
 				validator: function (text) {

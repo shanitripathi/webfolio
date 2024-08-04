@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import Message from '$db/messageModel';
 import errors from '$utils/apiErrors';
 
@@ -18,10 +19,24 @@ export const GET = async () => {
 };
 
 // create a message
-export const POST = async ({ request }) => {
+export const POST = async ({ request, cookies }) => {
 	try {
+		const isMessageSent = cookies.get('messageSent');
+		if (isMessageSent) {
+			const { statusCode, status, message } = errors.tooManyRequests;
+			return new Response(JSON.stringify({ status, message }), {
+				status: statusCode,
+				headers: { 'Content-Type': 'application/json' }
+			});
+		}
 		const body = await request.json();
 		const message = await Message.create(body);
+		cookies.set('messageSent', 'true', {
+			path: '/',
+			expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+			secure: !dev,
+			httpOnly: false
+		});
 		return new Response(JSON.stringify({ status: 'success', message: body }), {
 			status: 201,
 			headers: { 'Content-Type': 'application/json' }

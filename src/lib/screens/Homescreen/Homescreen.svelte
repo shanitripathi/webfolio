@@ -13,7 +13,7 @@
 
 <header class="flex flex-col gap-6 md:flex-row md:items-center">
 	<div class="h-[120px] w-[120px] overflow-hidden rounded-full border border-brightness">
-		<img class="h-full w-full object-cover" src={Profile} alt="profile" />
+		<img class="object-cover w-full h-full" src={Profile} alt="profile" />
 	</div>
 	<div class="text-xl">
 		<div class="whitespace-pre-line">
@@ -38,7 +38,7 @@
 	</div>
 </header>
 
-<section class="mt-8 flex flex-col gap-3 text-sm text-midtone">
+<section class="flex flex-col gap-3 mt-8 text-sm text-midtone">
 	<p>
 		Born {age} years ago, I develop websites 💻 and when I'm not doing that, you'll often find me behind
 		the lens, capturing folks around me 📸.
@@ -54,11 +54,12 @@
 	</p>
 	<p>
 		If you're interested in collaborating on a project or just want to connect, feel free to reach
-		out! You can catch me over <Anchor isBold={true} href={constants.mail}>email ✉️</Anchor> or <Anchor
+		out! You can catch me over <Anchor isBold={true} href={constants.mail}>email ✉️</Anchor>, <Anchor
 			isBold={true}
 			target="_blank"
 			href={constants.instagram}>instagram</Anchor
-		>. Let's build something awesome together! 🌲
+		>, or <Anchor isBold={true} href={'/messageme'}>message me anoymously 🕵️‍♂️</Anchor> . Let's build something
+		awesome together! 🌲
 	</p>
 </section>
 

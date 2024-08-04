@@ -55,7 +55,7 @@
 		{#if shouldShowCredit}
 			<div
 				transition:fade={{ duration: 200 }}
-				class="p-2 bg-gradient-to-t from-main to-transparent"
+				class="bg-gradient-to-t from-main to-transparent p-2"
 			>
 				photo by <Anchor
 					href={`https://unsplash.com/@${imageDetail?.user?.username}?utm_source=shani_portfolio&utm_medium=referral`}

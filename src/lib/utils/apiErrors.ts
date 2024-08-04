@@ -8,5 +8,10 @@ export default {
 		statusCode: 400,
 		status: 'fail',
 		message: 'Invalid ID'
+	},
+	tooManyRequests: {
+		statusCode: 429,
+		status: 'fail',
+		message: 'You have already sent a message. Try again after 24 hours.'
 	}
 };
