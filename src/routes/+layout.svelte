@@ -31,7 +31,7 @@
 			document.documentElement.setAttribute('data-theme', theme);
 		}
 		// send page view event
-		sendGaEvent({ event_name: 'page_view' });
+		sendGaEvent({ event_name: 'page_view', page_referrer: data.pageRef ?? 'deeplink' });
 
 		// @ts-ignore
 		$isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -48,10 +48,10 @@
 
 <main class="flex min-h-screen bg-main text-midtone">
 	<div
-		class="container mx-auto flex w-full max-w-2xl flex-shrink flex-grow flex-col px-6 pt-10 md:pt-20"
+		class="container flex flex-col flex-grow flex-shrink w-full max-w-2xl px-6 pt-10 mx-auto md:pt-20"
 	>
 		<Header />
-		<div class="flex-shrink flex-grow py-10">
+		<div class="flex-grow flex-shrink py-10">
 			<slot />
 		</div>
 		<div class="mt-4">
