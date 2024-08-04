@@ -10,6 +10,10 @@
 			const response = await fetch(`/api/messages/${event.detail.id}`, {
 				method: 'DELETE'
 			});
+			if (!response.ok) {
+				location.reload();
+				throw new Error('could not delete message');
+			}
 			messages = messages.filter((message) => message._id !== event.detail.id);
 		} catch (e) {
 			console.error(e);

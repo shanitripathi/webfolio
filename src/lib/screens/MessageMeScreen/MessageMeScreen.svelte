@@ -69,8 +69,9 @@
 						shouldFocus={true}
 						name="messageMe"
 						id="messageMe"
-						placeholder="start typing here ✍🏻"
+						placeholder={isSending ? 'start typing here ✍🏻' : 'sending your message..... 📨'}
 						maxLength={constants.messageLength}
+						isLoading={isSending}
 						bind:value={message}
 						on:enter={sendMessage}
 					></Textarea>
