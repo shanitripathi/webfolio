@@ -8,14 +8,17 @@
 	import { onMount } from 'svelte';
 	import { isDarkTheme } from '$stores/theme';
 	import { navigating } from '$app/stores';
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import Gtm from '$components/Gtm.svelte';
 	import { sendGaEvent } from '$helpers/analyticsHelper';
 	import { isAndroid, isFirefox, isIos, isMac, isSafari } from '$stores/platformIdentifierStore';
+	import { inject } from '@vercel/analytics';
 
 	export let data: PageData;
 
 	NProgress.configure({ showSpinner: false, speed: 400 });
+
+	inject({ mode: dev ? 'development' : 'production' });
 
 	$: if (browser && $navigating) {
 		NProgress.start();
