@@ -31,7 +31,7 @@
 			document.documentElement.setAttribute('data-theme', theme);
 		}
 		// send page view event
-		sendGaEvent({ event_name: 'page_view' });
+		sendGaEvent({ event_name: 'page_view', page_referrer: data.pageRef ?? 'deeplink' });
 
 		// @ts-ignore
 		$isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;

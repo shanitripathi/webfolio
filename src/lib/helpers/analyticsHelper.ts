@@ -8,6 +8,7 @@ declare global {
 
 type Event = {
 	event_name: 'page_view';
+	page_referrer?: string;
 	client_id?: string;
 };
 

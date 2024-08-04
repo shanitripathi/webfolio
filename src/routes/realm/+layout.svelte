@@ -46,7 +46,7 @@
 	{:else}
 		<div class="flex flex-col items-center justify-center gap-2">
 			<p class="text-sm">🔮✨ What's the magic word? 🧙‍♂️</p>
-			<form on:submit|preventDefault={login} class="w-[200px]">
+			<form on:submit|preventDefault={login} class="w-[250px]">
 				<input
 					bind:this={inputRef}
 					bind:value={password}
