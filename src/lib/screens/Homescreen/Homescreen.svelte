@@ -54,11 +54,12 @@
 	</p>
 	<p>
 		If you're interested in collaborating on a project or just want to connect, feel free to reach
-		out! You can catch me over <Anchor isBold={true} href={constants.mail}>email ✉️</Anchor> or <Anchor
+		out! You can catch me over <Anchor isBold={true} href={constants.mail}>email ✉️</Anchor>, <Anchor
 			isBold={true}
 			target="_blank"
 			href={constants.instagram}>instagram</Anchor
-		>. Let's build something awesome together! 🌲
+		>, or <Anchor isBold={true} href={'/messageme'}>message me anoymously 🕵️‍♂️</Anchor> . Let's build something
+		awesome together! 🌲
 	</p>
 </section>
 

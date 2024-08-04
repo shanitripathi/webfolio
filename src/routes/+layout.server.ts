@@ -11,6 +11,8 @@ export const load: LayoutServerLoad = async (input) => {
 	const cookies = cookie.parse(input.request.headers.get('cookie') || '');
 	const themeCookie = cookies['theme'] || 'dark';
 	const clientId = cookies['clientId'];
+	const isMessageSent = !!cookies['messageSent'];
+	const isValidSession = !!cookies['token'];
 
 	let unsplashPhotos: UnsplashUsersPhotos = undefined;
 
@@ -27,6 +29,8 @@ export const load: LayoutServerLoad = async (input) => {
 	return {
 		theme: themeCookie,
 		unsplashPhotos,
-		clientId: clientId || ''
+		clientId: clientId || '',
+		isMessageSent,
+		isValidSession
 	};
 };

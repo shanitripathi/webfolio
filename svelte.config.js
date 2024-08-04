@@ -19,7 +19,9 @@ const config = {
 			$stores: path.resolve('./src/lib/stores'),
 			$screens: path.resolve('./src/lib/screens'),
 			$assets: path.resolve('./src/lib/assets'),
-			$helpers: path.resolve('./src/lib/helpers')
+			$helpers: path.resolve('./src/lib/helpers'),
+			$utils: path.resolve('./src/lib/utils'),
+			$db: path.resolve('./src/db')
 		}
 	}
 };
