@@ -2,6 +2,7 @@ import cookie from 'cookie';
 import { uid } from 'uid';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
+import { redirect } from '@sveltejs/kit';
 
 const { VITE_DB_CONNNECTION_STRING, VITE_DB_USERNAME, VITE_DB_PASSWORD } = import.meta.env;
 
@@ -36,12 +37,18 @@ const getCookie = (request: Request, name: string) => {
 	return cookies[name];
 };
 
-const verifyJWT = (token: string) => {
+const verifyJWT = (token: string): boolean => {
 	const { VITE_JWT_SECRET } = import.meta.env;
 	if (!VITE_JWT_SECRET) {
-		throw new Error('jwt secret is not defined');
+		return false;
 	}
-	return jwt.verify(token, VITE_JWT_SECRET);
+	try {
+		jwt.verify(token, VITE_JWT_SECRET);
+		return true;
+	} catch (error) {
+		console.error('Token verification failed:');
+		return false;
+	}
 };
 
 export const handle = async ({ event, resolve }) => {
@@ -50,18 +57,24 @@ export const handle = async ({ event, resolve }) => {
 	const clientId = getCookie(request, 'clientId');
 	const token = getCookie(request, 'token');
 
-	//canot get all the messages, cant delete all the messages, can't delte one message
+	//canot get all the messages, cant delete all the messages, can't delete one message
 
-	if (
-		(event.request.url.includes('/api/messages') &&
-			['GET', 'DELETE'].includes(event.request.method)) ||
-		(event.request.url.includes('/api/messages') &&
-			event.params?.id &&
-			event.request.method === 'DELETE')
-	) {
+	const isApiMessages = event.request.url.includes('/api/messages');
+	const isGetOrDelete = ['GET', 'DELETE'].includes(event.request.method);
+	const isDeleteWithId = event.params?.id && event.request.method === 'DELETE';
+	const isRealm = event.request.url.includes('/realm') && !event.request.url.includes('redirect');
+
+	// Your logic here
+
+	let shouldRedirect = false;
+
+	if ((isApiMessages && isGetOrDelete) || (isApiMessages && isDeleteWithId) || isRealm) {
 		try {
 			const isValidToken = verifyJWT(token);
-			if (!isValidToken) {
+
+			if (!isValidToken && event.request.url.includes('/realm')) {
+				shouldRedirect = true;
+			} else if (!isValidToken) {
 				throw new Error('Unauthorized');
 			}
 		} catch (err) {
@@ -70,6 +83,14 @@ export const handle = async ({ event, resolve }) => {
 				headers: { 'Content-Type': 'application/json' }
 			});
 		}
+	}
+	const { url, headers } = event.request;
+	const host = headers.get('host');
+
+	if (shouldRedirect) {
+		const redirectTo = host ? url.split(host)[1] : '/';
+		console.log('redirecting to login', redirectTo);
+		throw redirect(307, `/login?redirect=${redirectTo}`);
 	}
 
 	const response = await resolve(event, {
