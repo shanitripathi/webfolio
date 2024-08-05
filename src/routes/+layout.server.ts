@@ -1,6 +1,7 @@
 import type { LayoutServerLoad } from './$types';
 import type { UnsplashUsersPhotos } from '$lib/types/unsplashResponseTypes';
 import cookie from 'cookie';
+import { getSpotifyToken, getCurrentTrack, type SpotifyTrack } from '$helpers/spotify';
 
 const unsplashUri = import.meta.env.VITE_UNSPLASH_URI;
 const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
@@ -27,12 +28,39 @@ export const load: LayoutServerLoad = async (input) => {
 		console.error('error fetching unsplash images ', e);
 	}
 
+	let currentTrack: SpotifyTrack = {};
+
+	try {
+		const spotifyAccessTokenResponse = await input.fetch('/api/spotify/accessToken');
+		if (!spotifyAccessTokenResponse.ok) {
+			throw new Error('error fetching spotify token');
+		}
+		const spotifyAccessToken = await spotifyAccessTokenResponse.json();
+		const token = spotifyAccessToken.data.access_token;
+
+		const spotifyNowPlayingResponse = await input.fetch('/api/spotify/nowPlaying', {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		});
+		if (!spotifyNowPlayingResponse.ok) {
+			throw new Error('error fetching current track');
+		}
+		const data = await spotifyNowPlayingResponse.json();
+		if (data?.data) {
+			currentTrack = data.data;
+		}
+	} catch (e) {
+		console.error('error fetching spotify token', e);
+	}
+
 	return {
 		theme: themeCookie,
 		unsplashPhotos,
 		clientId: clientId || '',
 		isMessageSent,
 		isValidSession,
-		pageRef
+		pageRef,
+		currentTrack
 	};
 };
