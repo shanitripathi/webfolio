@@ -10,7 +10,6 @@
 	import { navigating } from '$app/stores';
 	import { browser, dev } from '$app/environment';
 	import Gtm from '$components/Gtm.svelte';
-	import { sendGaEvent } from '$helpers/analyticsHelper';
 	import { isAndroid, isFirefox, isIos, isMac, isSafari } from '$stores/platformIdentifierStore';
 	import { inject } from '@vercel/analytics';
 
@@ -33,8 +32,6 @@
 		if (theme) {
 			document.documentElement.setAttribute('data-theme', theme);
 		}
-		// send page view event
-		sendGaEvent({ event_name: 'page_view', page_referrer: data.pageRef ?? 'deeplink' });
 
 		// @ts-ignore
 		$isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -43,18 +40,14 @@
 		$isAndroid = navigator.userAgent.toLowerCase().indexOf('android') > -1;
 		$isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 	});
-
-	const id = import.meta.env.VITE_GA_ID;
 </script>
-
-<Gtm {id} />
 
 <main class="flex min-h-screen bg-main text-midtone">
 	<div
-		class="container mx-auto flex w-full max-w-2xl flex-shrink flex-grow flex-col px-6 pt-10 md:pt-20"
+		class="container flex flex-col flex-grow flex-shrink w-full max-w-2xl px-6 pt-10 mx-auto md:pt-20"
 	>
 		<Header />
-		<div class="flex-shrink flex-grow py-10">
+		<div class="flex-grow flex-shrink py-10">
 			<slot />
 		</div>
 		<div class="mt-4">
