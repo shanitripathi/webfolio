@@ -12,6 +12,7 @@
 	export let download: undefined | string = undefined;
 	export let tooltipText = '';
 	export let tooltipTop = true;
+	export let disabled = false;
 
 	let shouldShowTooltip = false;
 
@@ -34,7 +35,7 @@
 	{href}
 	{target}
 	{download}
-	class={`text-brightness betterHover:hover:text-blue-400 ${isBold ? 'font-bold' : 'font-normal'} ${sizeClass} ${optionalClass} relative`}
+	class={`text-brightness betterHover:hover:text-blue-400 ${isBold ? 'font-bold' : 'font-normal'} ${sizeClass} ${optionalClass} relative ${disabled ? 'pointer-events-none' : ''}`}
 >
 	<slot />
 	{#if tooltipText && shouldShowTooltip}
