@@ -69,7 +69,7 @@
 						shouldFocus={true}
 						name="messageMe"
 						id="messageMe"
-						placeholder={isSending ? 'start typing here ✍🏻' : 'sending your message..... 📨'}
+						placeholder={isSending ? 'sending...' : 'start typing here ✍🏻'}
 						maxLength={constants.messageLength}
 						isLoading={isSending}
 						bind:value={message}
