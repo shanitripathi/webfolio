@@ -1,7 +1,7 @@
 import type { LayoutServerLoad } from './$types';
 import type { UnsplashUsersPhotos } from '$lib/types/unsplashResponseTypes';
 import cookie from 'cookie';
-import { getSpotifyToken, getCurrentTrack, type SpotifyTrack } from '$helpers/spotify';
+import { type SpotifyData } from '$helpers/spotify';
 
 const unsplashUri = import.meta.env.VITE_UNSPLASH_URI;
 const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
@@ -27,7 +27,10 @@ export const load: LayoutServerLoad = async (input) => {
 		console.error('error fetching unsplash images ', e);
 	}
 
-	let currentTrack: SpotifyTrack = {};
+	let spotifyData: SpotifyData = {
+		currentlyPlaying: {},
+		recentlyPlayed: {}
+	};
 
 	try {
 		const spotifyAccessTokenResponse = await input.fetch('/api/spotify/accessToken');
@@ -46,8 +49,13 @@ export const load: LayoutServerLoad = async (input) => {
 			throw new Error('error fetching current track');
 		}
 		const data = await spotifyNowPlayingResponse.json();
-		if (data?.data) {
-			currentTrack = data.data;
+
+		if (data?.data?.currentlyPlaying) {
+			spotifyData.currentlyPlaying = { ...data.data.currentlyPlaying };
+		}
+
+		if (data?.data?.recentlyPlayed) {
+			spotifyData.recentlyPlayed = data?.data?.recentlyPlayed?.items[0];
 		}
 	} catch (e) {
 		console.error('error fetching spotify token', e);
@@ -59,6 +67,6 @@ export const load: LayoutServerLoad = async (input) => {
 		clientId: clientId || '',
 		isMessageSent,
 		pageRef,
-		currentTrack
+		spotifyData
 	};
 };

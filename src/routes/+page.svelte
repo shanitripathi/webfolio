@@ -10,4 +10,4 @@
 </script>
 
 <MetaTags />
-<Homescreen nowPlaying={data.currentTrack} />
+<Homescreen spotifyData={data.spotifyData} />
