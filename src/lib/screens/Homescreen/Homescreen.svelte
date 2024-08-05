@@ -6,10 +6,10 @@
 	import constants from '$helpers/constants';
 	import ImageGrid from '$components/ImageGrid/ImageGrid.svelte';
 	import { unsplashImageStore } from '$stores/unsplashImageStore';
-	import type { SpotifyTrack } from '$helpers/spotify';
+	import type { SpotifyData } from '$helpers/spotify';
 	import NowPlayingSong from './NowPlayingSong.svelte';
 
-	export let nowPlaying: SpotifyTrack = {};
+	export let spotifyData: SpotifyData = {};
 
 	const age = ageCalculator(new Date('1996-01-07'));
 	$: unsplashPhotos = $unsplashImageStore ? $unsplashImageStore.slice(0, 6) : $unsplashImageStore;
@@ -40,7 +40,7 @@
 			<Anchor href={constants.mail} tooltipText="send me an email"><MailIcon size="20" /></Anchor>
 		</div>
 		<div class="mt-4 flex w-fit">
-			<NowPlayingSong {nowPlaying} />
+			<NowPlayingSong {spotifyData} />
 		</div>
 	</div>
 </header>
