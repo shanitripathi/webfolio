@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 
@@ -25,4 +25,4 @@
 	{#if scriptSrc}
 		<script async src={scriptSrc}></script>
 	{/if}
-</svelte:head>
+</svelte:head> -->

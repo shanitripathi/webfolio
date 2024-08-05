@@ -10,7 +10,6 @@
 	import { navigating } from '$app/stores';
 	import { browser, dev } from '$app/environment';
 	import Gtm from '$components/Gtm.svelte';
-	import { sendGaEvent } from '$helpers/analyticsHelper';
 	import { isAndroid, isFirefox, isIos, isMac, isSafari } from '$stores/platformIdentifierStore';
 	import { inject } from '@vercel/analytics';
 
@@ -33,8 +32,6 @@
 		if (theme) {
 			document.documentElement.setAttribute('data-theme', theme);
 		}
-		// send page view event
-		sendGaEvent({ event_name: 'page_view', page_referrer: data.pageRef ?? 'deeplink' });
 
 		// @ts-ignore
 		$isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -43,11 +40,7 @@
 		$isAndroid = navigator.userAgent.toLowerCase().indexOf('android') > -1;
 		$isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 	});
-
-	const id = import.meta.env.VITE_GA_ID;
 </script>
-
-<Gtm {id} />
 
 <main class="flex min-h-screen bg-main text-midtone">
 	<div
