@@ -13,7 +13,6 @@ export const load: LayoutServerLoad = async (input) => {
 	const themeCookie = cookies['theme'] || 'dark';
 	const clientId = cookies['clientId'];
 	const isMessageSent = !!cookies['messageSent'];
-	const isValidSession = !!cookies['token'];
 	const pageRef = input.url.searchParams.get('ref') ?? '';
 
 	let unsplashPhotos: UnsplashUsersPhotos = undefined;
@@ -59,7 +58,6 @@ export const load: LayoutServerLoad = async (input) => {
 		unsplashPhotos,
 		clientId: clientId || '',
 		isMessageSent,
-		isValidSession,
 		pageRef,
 		currentTrack
 	};
