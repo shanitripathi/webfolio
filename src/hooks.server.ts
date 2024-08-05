@@ -63,34 +63,46 @@ export const handle = async ({ event, resolve }) => {
 	const isGetOrDelete = ['GET', 'DELETE'].includes(event.request.method);
 	const isDeleteWithId = event.params?.id && event.request.method === 'DELETE';
 	const isRealm = event.request.url.includes('/realm') && !event.request.url.includes('redirect');
+	const isLogin = event.request.url.includes('/login');
 
 	// Your logic here
 
 	let shouldRedirect = false;
+	let isValidToken = false;
 
-	if ((isApiMessages && isGetOrDelete) || (isApiMessages && isDeleteWithId) || isRealm) {
+	console.log(event.request.url);
+
+	if ((isApiMessages && isGetOrDelete) || (isApiMessages && isDeleteWithId) || isRealm || isLogin) {
 		try {
-			const isValidToken = verifyJWT(token);
+			isValidToken = verifyJWT(token);
 
-			if (!isValidToken && event.request.url.includes('/realm')) {
+			if (!isValidToken && isRealm) {
 				shouldRedirect = true;
 			} else if (!isValidToken) {
 				throw new Error('Unauthorized');
 			}
 		} catch (err) {
-			return new Response(JSON.stringify({ status: 'fail', message: 'Unauthorized' }), {
-				status: 401,
-				headers: { 'Content-Type': 'application/json' }
-			});
+			if (!isLogin) {
+				return new Response(JSON.stringify({ status: 'fail', message: 'Unauthorized' }), {
+					status: 401,
+					headers: { 'Content-Type': 'application/json' }
+				});
+			}
 		}
 	}
 	const { url, headers } = event.request;
 	const host = headers.get('host');
 
-	if (shouldRedirect) {
+	if (shouldRedirect && isRealm) {
+		// Redirect to login if not logged in
 		const redirectTo = host ? url.split(host)[1] : '/';
-		console.log('redirecting to login', redirectTo);
+
 		throw redirect(307, `/login?redirect=${redirectTo}`);
+	}
+
+	if (isLogin && isValidToken) {
+		// Redirect to home if already logged in
+		throw redirect(307, '/');
 	}
 
 	const response = await resolve(event, {
