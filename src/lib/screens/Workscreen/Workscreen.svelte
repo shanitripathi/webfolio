@@ -16,7 +16,7 @@
 	</h1>
 
 	<p>On a mission to build products that people love and have some fun along the way!</p>
-	<WorkSection>
+	<!-- <WorkSection>
 		<svelte:fragment slot="heading">Axonista</svelte:fragment>
 		<svelte:fragment slot="subHeading">Web Developer(2021 - present)</svelte:fragment>
 		<svelte:fragment slot="description">
@@ -39,9 +39,9 @@
 			I built a high-performing website that achieved impressive Lighthouse scores through meticulous
 			performance optimization efforts.
 		</svelte:fragment>
-	</WorkSection>
+	</WorkSection> -->
 
-	<WorkSection>
+	<!-- <WorkSection>
 		<svelte:fragment slot="heading">Chiku</svelte:fragment>
 		<svelte:fragment slot="subHeading">Frontend Developer(2019 - 2020)</svelte:fragment>
 		<svelte:fragment slot="description">
@@ -50,12 +50,12 @@
 			integrated third-party libraries with backend REST APIs, and implemented Server-Side Rendering
 			for improved SEO and faster loading times.
 		</svelte:fragment>
-	</WorkSection>
+	</WorkSection> -->
 </section>
 
 <section>
-	<h1 class="my-10 text-2xl font-medium tracking-tighter">personal projects</h1>
-	<p>Projects that I've worked on in my free time, just for fun and learning!</p>
+	<!-- <h1 class="my-10 text-2xl font-medium tracking-tighter">personal projects</h1>
+	<p>Projects that I've worked on in my free time, just for fun and learning!</p> -->
 	<div class="md:ml-4">
 		<hr class="my-6 border-neutral-800" />
 		<ul class="md:ml-4">
