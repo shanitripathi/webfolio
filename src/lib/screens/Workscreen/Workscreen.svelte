@@ -16,32 +16,27 @@
 	</h1>
 
 	<p>On a mission to build products that people love and have some fun along the way!</p>
-	<!-- <WorkSection>
+	<WorkSection>
 		<svelte:fragment slot="heading">Axonista</svelte:fragment>
 		<svelte:fragment slot="subHeading">Web Developer(2021 - present)</svelte:fragment>
 		<svelte:fragment slot="description">
-			In my role as a web developer at Axonista, I've been involved in the development and
-			maintenance of several client projects: For the Waterbear project, I was responsible for
-			managing the frontend using Vue.js, ensuring smooth navigation and user experience.
-			<br />
-			Additionally, I handled content management tasks using Craft and Ediflo CMS, ensuring the website's
-			content remained up-to-date and engaging.
+			As a web developer, I contributed to several high-profile projects. For an environmental
+			streaming service, I utilized Vue.js to enhance usability, ensuring a seamless experience
+			while keeping content fresh through Craft and Ediflo CMS. CMS
 			<br />
 			<br />
-			At QVC Comcast TV App, I played a key role in maintaining the frontend using modern technologies
-			like Svelte, TypeScript, and GraphQL. I focused on optimizing the performance of the app, particularly
-			on older Comcast devices, and successfully integrated a transactional experience for in-app purchases,
-			enhancing user convenience.
+			In a widely-used streaming e-commerce app with millions of users, I played a key role in improving
+			the frontend using Svelte, TypeScript, and GraphQL. My focus was on optimizing performance, particularly
+			on older devices, and successfully integrating features for convenient in-app purchases.
 			<br />
 			<br />
-			For the QVC Streaming Website project, I led the delivery of the Minimum Viable Product (MVP) within
-			a tight timeframe. Leveraging technologies like SvelteKit, TypeScript, GraphQL, and Tailwind CSS,
-			I built a high-performing website that achieved impressive Lighthouse scores through meticulous
-			performance optimization efforts.
+			For another streaming website, I led the team in delivering the first version swiftly, leveraging
+			SvelteKit, TypeScript, GraphQL, and Tailwind CSS to create a high-performing site that met strict
+			performance benchmarks.
 		</svelte:fragment>
-	</WorkSection> -->
+	</WorkSection>
 
-	<!-- <WorkSection>
+	<WorkSection>
 		<svelte:fragment slot="heading">Chiku</svelte:fragment>
 		<svelte:fragment slot="subHeading">Frontend Developer(2019 - 2020)</svelte:fragment>
 		<svelte:fragment slot="description">
@@ -50,12 +45,12 @@
 			integrated third-party libraries with backend REST APIs, and implemented Server-Side Rendering
 			for improved SEO and faster loading times.
 		</svelte:fragment>
-	</WorkSection> -->
+	</WorkSection>
 </section>
 
 <section>
-	<!-- <h1 class="my-10 text-2xl font-medium tracking-tighter">personal projects</h1>
-	<p>Projects that I've worked on in my free time, just for fun and learning!</p> -->
+	<h1 class="my-10 text-2xl font-medium tracking-tighter">personal projects</h1>
+	<p>Projects that I've worked on in my free time, just for fun and learning!</p>
 	<div class="md:ml-4">
 		<hr class="my-6 border-neutral-800" />
 		<ul class="md:ml-4">
