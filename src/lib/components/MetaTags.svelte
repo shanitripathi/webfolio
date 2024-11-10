@@ -1,6 +1,4 @@
 <script>
-	// import Profile from '$assets/images/profile-bans.jpg';
-
 	export let title = 'Shani Tripathi - Developer, Photographer, and a Person';
 	export let description =
 		"Hey, this is Shani Tripathi's portfolio - Developer, photographer, and a person";

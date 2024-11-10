@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Anchor from '$lib/components/Anchor/Anchor.svelte';
-	import Profile from '$assets/images/profile-bans.jpg';
+	import Profile from '$assets/images/profile-pic.jpg';
 	import { InstagramIcon, LinkedinIcon, MailIcon, GithubIcon } from 'svelte-feather-icons';
 	import { ageCalculator } from '$lib/helpers/ageCalculator';
 	import constants from '$helpers/constants';
