@@ -12,7 +12,7 @@
 </script>
 
 <button
-	on:pointerup={handleToggle}
+	onpointerup={handleToggle}
 	class="relative flex h-4 w-8 items-center justify-between overflow-hidden rounded-lg border border-midtone px-[2px]"
 >
 	<span class=""><MoonIcon size="10" /></span>

@@ -1,15 +1,17 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	interface Props {
+		disabled?: boolean;
+		children?: import('svelte').Snippet;
+		pointerup?: (...args: any[]) => any;
+	}
 
-	export let disabled = false;
-
-	const dispatch = createEventDispatcher();
+	let { disabled = false, children, pointerup = undefined }: Props = $props();
 </script>
 
 <button
 	class="{`w-full rounded-md border border-transparent p-3 text-sm text-neutral-200 outline-none transition-all duration-200 ease-in-out ${disabled ? 'cursor-not-allowed' : 'betterHover:hover:border-blue-400'}`}}}"
-	on:pointerup={() => !disabled && dispatch('pointerup')}
+	onpointerup={(e) => !disabled && pointerup && pointerup(e)}
 	{disabled}
 >
-	<slot></slot>
+	{@render children?.()}
 </button>

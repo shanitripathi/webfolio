@@ -2,33 +2,35 @@
 	import type { Message } from '$lib/types/messageType';
 	import MessageBody from './Message.svelte';
 
-	export let messages: Message[] = [];
+	interface Props {
+		messages?: Message[];
+	}
 
-	const handleDeleteMessage = async (event: CustomEvent<{ id: string }>) => {
-		console.log('Delete message', event.detail.id);
+	let { messages = $bindable([]) }: Props = $props();
+
+	const handleDeleteMessage = async (id: string) => {
 		try {
-			const response = await fetch(`/api/messages/${event.detail.id}`, {
+			const response = await fetch(`/api/messages/${id}`, {
 				method: 'DELETE'
 			});
 			if (!response.ok) {
 				location.reload();
 				throw new Error('could not delete message');
 			}
-			messages = messages.filter((message) => message._id !== event.detail.id);
+			messages = messages.filter((message) => message._id !== id);
 		} catch (e) {
 			console.error(e);
 		}
-		// Delete message
 	};
 </script>
 
-<section class="h-full w-full">
+<section class="w-full h-full">
 	{#if messages.length === 0}
 		<p class="text-sm">
 			Oops! No messages here. It's emptier than Kakashi's face under the mask! 🌀
 		</p>
 	{:else}
-		<h1 class="mb-8 flex items-center gap-2 text-2xl font-medium tracking-tighter">all messages</h1>
+		<h1 class="flex items-center gap-2 mb-8 text-2xl font-medium tracking-tighter">all messages</h1>
 		<ul class="w-full space-y-2">
 			{#each messages as message}
 				<li class="w-full">
@@ -36,7 +38,7 @@
 						time={message.createdAt}
 						text={message.message}
 						id={message._id}
-						on:deleteMessage={handleDeleteMessage}
+						deleteMessage={handleDeleteMessage}
 					/>
 				</li>
 			{/each}

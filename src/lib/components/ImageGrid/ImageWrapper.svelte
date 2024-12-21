@@ -5,9 +5,13 @@
 	import { onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	export let imageDetail: UnsplashPhoto;
+	interface Props {
+		imageDetail: UnsplashPhoto;
+	}
 
-	let shouldShowCredit = false;
+	let { imageDetail }: Props = $props();
+
+	let shouldShowCredit = $state(false);
 	let hideTimeoutId: NodeJS.Timeout;
 
 	const handleTouchCreditHideTimeout = () => {
@@ -40,9 +44,9 @@
 </script>
 
 <div
-	on:pointerover={showCredit}
-	on:pointerleave={hideCredit}
-	on:pointerup={showCredit}
+	onpointerover={showCredit}
+	onpointerleave={hideCredit}
+	onpointerup={showCredit}
 	class="relative overflow-hidden rounded-md bg-shadow [&:nth-child(1)]:row-span-2 md:[&:nth-child(1)]:row-span-2 [&:nth-child(3)]:row-span-2 md:[&:nth-child(3)]:row-span-2 md:[&:nth-child(4)]:row-span-2"
 >
 	<Image

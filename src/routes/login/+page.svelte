@@ -1,23 +1,29 @@
 <script lang="ts">
-	import { redirect } from '@sveltejs/kit';
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	let inputRef: HTMLInputElement;
-	let password = '';
-	let errorMessage = '';
+	let { data }: Props = $props();
+
+	let inputRef: HTMLInputElement | undefined = $state(undefined);
+	let password = $state('');
+	let errorMessage = $state('');
 
 	const redirectTo = data.redirectTo;
 
-	$: password, (errorMessage = '');
+	$effect(() => {
+		password && (errorMessage = '');
+	});
 
 	onMount(() => {
 		inputRef && inputRef.focus();
 	});
 
-	const login = async () => {
+	const login = async (e: SubmitEvent) => {
+		e.preventDefault();
 		let shouldRedirect = false;
 		if (!password) return;
 		try {
@@ -30,9 +36,8 @@
 			});
 			if (response.ok) {
 				shouldRedirect = true;
-				// location.reload();
 			} else {
-				inputRef.focus();
+				inputRef?.focus();
 				errorMessage = "🛑 that's not the magic word!";
 			}
 		} catch (e) {
@@ -45,10 +50,10 @@
 	};
 </script>
 
-<main class="flex h-full flex-col items-center justify-center">
+<main class="flex flex-col items-center justify-center h-full">
 	<div class="flex flex-col items-center justify-center gap-2">
 		<p class="text-sm">🔮✨ What's the magic word? 🧙‍♂️</p>
-		<form on:submit|preventDefault={login} class="w-[250px]">
+		<form onsubmit={login} class="w-[250px]">
 			<input
 				bind:this={inputRef}
 				bind:value={password}
@@ -59,7 +64,7 @@
 			{#if errorMessage}
 				<p class="h-3 text-[10px] text-red-500">{errorMessage}</p>
 			{:else}
-				<form class="h-3 text-[10px] text-red-500">&nbsp;</form>
+				<p class="h-3 text-[10px] text-red-500">&nbsp;</p>
 			{/if}
 		</form>
 	</div>

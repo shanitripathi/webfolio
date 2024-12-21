@@ -2,7 +2,11 @@
 	import type { UnsplashUsersPhotos } from '$lib/types/unsplashResponseTypes';
 	import ImageWrapper from './ImageWrapper.svelte';
 
-	export let images: UnsplashUsersPhotos;
+	interface Props {
+		images: UnsplashUsersPhotos;
+	}
+
+	let { images }: Props = $props();
 </script>
 
 {#if images && images.length > 0}

@@ -17,34 +17,46 @@
 
 	<p>On a mission to build products that people love and have some fun along the way!</p>
 	<WorkSection>
-		<svelte:fragment slot="heading">Axonista</svelte:fragment>
-		<svelte:fragment slot="subHeading">Web Developer(2021 - present)</svelte:fragment>
-		<svelte:fragment slot="description">
-			As a web developer, I contributed to several high-profile projects. For an environmental
-			streaming service, I utilized Vue.js to enhance usability, ensuring a seamless experience
-			while keeping content fresh through Craft and Ediflo CMS. CMS
-			<br />
-			<br />
-			In a widely-used streaming e-commerce app with millions of users, I played a key role in improving
-			the frontend using Svelte, TypeScript, and GraphQL. My focus was on optimizing performance, particularly
-			on older devices, and successfully integrating features for convenient in-app purchases.
-			<br />
-			<br />
-			For another streaming website, I led the team in delivering the first version swiftly, leveraging
-			SvelteKit, TypeScript, GraphQL, and Tailwind CSS to create a high-performing site that met strict
-			performance benchmarks.
-		</svelte:fragment>
+		{#snippet heading()}
+				Axonista
+			{/snippet}
+		{#snippet subHeading()}
+				Web Developer(2021 - present)
+			{/snippet}
+		{#snippet description()}
+			
+				As a web developer, I contributed to several high-profile projects. For an environmental
+				streaming service, I utilized Vue.js to enhance usability, ensuring a seamless experience
+				while keeping content fresh through Craft and Ediflo CMS. CMS
+				<br />
+				<br />
+				In a widely-used streaming e-commerce app with millions of users, I played a key role in improving
+				the frontend using Svelte, TypeScript, and GraphQL. My focus was on optimizing performance, particularly
+				on older devices, and successfully integrating features for convenient in-app purchases.
+				<br />
+				<br />
+				For another streaming website, I led the team in delivering the first version swiftly, leveraging
+				SvelteKit, TypeScript, GraphQL, and Tailwind CSS to create a high-performing site that met strict
+				performance benchmarks.
+			
+			{/snippet}
 	</WorkSection>
 
 	<WorkSection>
-		<svelte:fragment slot="heading">Chiku</svelte:fragment>
-		<svelte:fragment slot="subHeading">Frontend Developer(2019 - 2020)</svelte:fragment>
-		<svelte:fragment slot="description">
-			I contributed to Chiku, a personal diary app available on Android and iOS. Using HTML, SCSS,
-			JavaScript, ReactJS, Redux, Git, and AWS, I replicated a community platform to a website,
-			integrated third-party libraries with backend REST APIs, and implemented Server-Side Rendering
-			for improved SEO and faster loading times.
-		</svelte:fragment>
+		{#snippet heading()}
+				Chiku
+			{/snippet}
+		{#snippet subHeading()}
+				Frontend Developer(2019 - 2020)
+			{/snippet}
+		{#snippet description()}
+			
+				I contributed to Chiku, a personal diary app available on Android and iOS. Using HTML, SCSS,
+				JavaScript, ReactJS, Redux, Git, and AWS, I replicated a community platform to a website,
+				integrated third-party libraries with backend REST APIs, and implemented Server-Side Rendering
+				for improved SEO and faster loading times.
+			
+			{/snippet}
 	</WorkSection>
 </section>
 

@@ -3,25 +3,29 @@
 	import Anchor from '$components/Anchor/Anchor.svelte';
 	import type { SpotifyData } from '$helpers/spotify';
 
-	export let spotifyData: SpotifyData = {};
+	interface Props {
+		spotifyData?: SpotifyData;
+	}
+
+	let { spotifyData = {} }: Props = $props();
 
 	const nowPlaying = spotifyData?.currentlyPlaying?.item;
 	const lastPlayed = spotifyData?.recentlyPlayed.track;
 
 	const isLongName = (name: string) => name?.length > 20;
 
-	$: currentName = nowPlaying?.name;
-	$: currentHref = nowPlaying?.external_urls?.spotify;
-	$: lastName = lastPlayed?.name;
-	$: lastHref = lastPlayed?.external_urls?.spotify;
-	$: songName = currentName || lastName;
-	$: href = currentHref || lastHref;
+	let currentName = $derived(nowPlaying?.name);
+	let currentHref = $derived(nowPlaying?.external_urls?.spotify);
+	let lastName = $derived(lastPlayed?.name);
+	let lastHref = $derived(lastPlayed?.external_urls?.spotify);
+	let songName = $derived(currentName || lastName);
+	let href = $derived(currentHref || lastHref);
 
-	$: tooltipText = currentName
+	let tooltipText = $derived(currentName
 		? 'now playing on spotify'
 		: lastName
 			? 'last played on spotify'
-			: 'nothing playing';
+			: 'nothing playing');
 </script>
 
 <Anchor disabled={!songName} {href} target={'_blank'} {tooltipText} tooltipTop={false}>
