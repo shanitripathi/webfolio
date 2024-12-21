@@ -1,20 +1,36 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 
-	export let href = '';
-	export let target: '_blank' | '' = '';
-	export let isBold = false;
-	export let sizeClass:
+	interface Props {
+		href?: string;
+		target?: '_blank' | '';
+		isBold?: boolean;
+		sizeClass?: 
 		| `text-[${5 | 6 | 7 | 8 | 9 | 10}px]`
 		| `text-${2 | 3 | 4 | 5 | 6}xl`
-		| `text-${'sm' | 'lg' | 'md' | 'xl' | 'base'}` = 'text-sm';
-	export let optionalClass = '';
-	export let download: undefined | string = undefined;
-	export let tooltipText = '';
-	export let tooltipTop = true;
-	export let disabled = false;
+		| `text-${'sm' | 'lg' | 'md' | 'xl' | 'base'}`;
+		optionalClass?: string;
+		download?: undefined | string;
+		tooltipText?: string;
+		tooltipTop?: boolean;
+		disabled?: boolean;
+		children?: import('svelte').Snippet;
+	}
 
-	let shouldShowTooltip = false;
+	let {
+		href = '',
+		target = '',
+		isBold = false,
+		sizeClass = 'text-sm',
+		optionalClass = '',
+		download = undefined,
+		tooltipText = '',
+		tooltipTop = true,
+		disabled = false,
+		children
+	}: Props = $props();
+
+	let shouldShowTooltip = $state(false);
 
 	const showTooltip = (ev: PointerEvent) => {
 		if (ev.pointerType === 'mouse') {
@@ -30,14 +46,14 @@
 </script>
 
 <a
-	on:pointerover={showTooltip}
-	on:pointerleave={hideTooltip}
+	onpointerover={showTooltip}
+	onpointerleave={hideTooltip}
 	{href}
 	{target}
 	{download}
 	class={`text-brightness betterHover:hover:text-blue-400 ${isBold ? 'font-bold' : 'font-normal'} ${sizeClass} ${optionalClass} relative ${disabled ? 'pointer-events-none' : ''}`}
 >
-	<slot />
+	{@render children?.()}
 	{#if tooltipText && shouldShowTooltip}
 		<span
 			transition:fly={{ y: 5, duration: 200 }}

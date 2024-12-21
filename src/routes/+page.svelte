@@ -4,9 +4,12 @@
 	import { unsplashImageStore } from '$stores/unsplashImageStore';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: $unsplashImageStore = data.unsplashPhotos;
+	let { data }: Props = $props();
+	$unsplashImageStore = data.unsplashPhotos;
 </script>
 
 <MetaTags />

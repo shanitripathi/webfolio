@@ -9,10 +9,14 @@
 	import type { SpotifyData } from '$helpers/spotify';
 	import NowPlayingSong from './NowPlayingSong.svelte';
 
-	export let spotifyData: SpotifyData = {};
+	interface Props {
+		spotifyData?: SpotifyData;
+	}
+
+	let { spotifyData = {} }: Props = $props();
 
 	const age = ageCalculator(new Date('1996-01-07'));
-	$: unsplashPhotos = $unsplashImageStore ? $unsplashImageStore.slice(0, 6) : $unsplashImageStore;
+	let unsplashPhotos = $derived($unsplashImageStore ? $unsplashImageStore.slice(0, 6) : $unsplashImageStore);
 </script>
 
 <header class="flex flex-col gap-6 md:flex-row md:items-center">

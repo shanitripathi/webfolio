@@ -9,9 +9,13 @@
 	} from 'svelte-feather-icons';
 	import { createEventDispatcher } from 'svelte';
 
-	export let muted = true;
-	export let paused = false;
-	export let fullscreen = false;
+	interface Props {
+		muted?: boolean;
+		paused?: boolean;
+		fullscreen?: boolean;
+	}
+
+	let { muted = true, paused = false, fullscreen = false }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -26,10 +30,10 @@
 	};
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 <div class="flex items-center justify-center gap-2 overflow-hidden rounded-md p-2">
 	<button
-		on:pointerup={() => {
+		onpointerup={() => {
 			dispatch('handlePlayPause');
 		}}
 	>
@@ -41,7 +45,7 @@
 	</button>
 
 	<button
-		on:pointerup={() => {
+		onpointerup={() => {
 			dispatch('handleMuteUnmute');
 		}}
 	>
@@ -52,7 +56,7 @@
 		{/if}
 	</button>
 	<button
-		on:pointerup={() => {
+		onpointerup={() => {
 			dispatch('handleFullscreen');
 		}}
 	>

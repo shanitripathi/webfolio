@@ -6,19 +6,26 @@
 	import { fade } from 'svelte/transition';
 	import { SendIcon } from 'svelte-feather-icons';
 
-	export let isMessageSent = false;
+	interface Props {
+		isMessageSent?: boolean;
+	}
 
-	let message = '';
-	let isSending = false;
-	let errorMessage = '';
+	let { isMessageSent = $bindable(false) }: Props = $props();
 
-	$: shouldDisable = message.trim().length === 0 || isSending;
-	$: message, (errorMessage = '');
-	$: constants.messageLength === message.trim().length &&
-		(errorMessage = '🚨 Whoa, that’s a novel! 📚😱 Please keep it under 1000 characters! 🙏✨');
+	let message = $state('');
+	let isSending = $state(false);
+	let errorMessage = $state('');
+
+	let shouldDisable = $derived(message.trim().length === 0 || isSending);
+	$effect(() => {
+		message && (errorMessage = '');
+	});
+	$effect(() => {
+		constants.messageLength === message.trim().length &&
+			(errorMessage = '🚨 Whoa, that’s a novel! 📚😱 Please keep it under 1000 characters! 🙏✨');
+	});
 
 	// if we have the session cookie, we can't send another message
-
 	const sendMessage = async (e: CustomEvent) => {
 		if (shouldDisable) return;
 		const isSmallMessage = message.trim().length < 20;
@@ -51,20 +58,20 @@
 	};
 </script>
 
-<section class="flex h-full items-center justify-center">
+<section class="flex items-center justify-center h-full">
 	{#if isMessageSent}
-		<p transition:fade={{ duration: 200 }} class="text-center text-sm text-brightness">
+		<p transition:fade={{ duration: 200 }} class="text-sm text-center text-brightness">
 			📬 Message sent! 🚀 Thanks for the note! 😎 Nothing too harsh, I hope! 😅 Keep smiling! 😊
 		</p>
 	{:else}
-		<div class="flex h-full flex-col items-center justify-center">
-			<p class="mb-10 text-center text-sm">
+		<div class="flex flex-col items-center justify-center h-full">
+			<p class="mb-10 text-sm text-center">
 				💬 Send an anonymous message! 🕵️‍♂️ Share thoughts, ideas, jokes, or even what you don’t like
 				about me! 🤫
 			</p>
 
 			<div class="mx-auto h-[150px] w-full">
-				<div class="relative h-full w-full">
+				<div class="relative w-full h-full">
 					<Textarea
 						shouldFocus={true}
 						name="messageMe"
@@ -73,14 +80,14 @@
 						maxLength={constants.messageLength}
 						isLoading={isSending}
 						bind:value={message}
-						on:enter={sendMessage}
+						onEnter={sendMessage}
 					></Textarea>
 					{#if !shouldDisable}
 						<div
 							transition:fade={{ duration: 200 }}
 							class="absolute right-0 top-0 z-[100] mx-auto w-fit"
 						>
-							<Button on:pointerup={sendMessage} disabled={shouldDisable}>
+							<Button pointerup={sendMessage} disabled={shouldDisable}>
 								<SendIcon class="betterHover:hover:scale-110" size="15" />
 							</Button>
 						</div>

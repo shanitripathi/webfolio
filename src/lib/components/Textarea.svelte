@@ -1,23 +1,34 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { createEventDispatcher } from 'svelte';
 
-	export let name: string;
-	export let id: string;
-	export let placeholder: string;
-	export let shouldFocus = false;
-	export let maxLength = 1000;
-	export let value = '';
-	export let isLoading = false;
+	interface Props {
+		name: string;
+		id: string;
+		placeholder: string;
+		shouldFocus?: boolean;
+		maxLength?: number;
+		value?: string;
+		isLoading?: boolean;
+		onEnter?: (...args: any[]) => any;
+	}
 
-	const dispatch = createEventDispatcher();
+	let {
+		name,
+		id,
+		placeholder,
+		shouldFocus = false,
+		maxLength = 1000,
+		value = $bindable(''),
+		isLoading = false,
+		onEnter = undefined
+	}: Props = $props();
 
-	let ref: HTMLTextAreaElement;
+	let ref: HTMLTextAreaElement | undefined = $state();
 
 	const handleKeydown = (event: KeyboardEvent) => {
 		if (event.key === 'Enter') {
 			event.preventDefault();
-			dispatch('enter');
+			onEnter && onEnter();
 		}
 	};
 
@@ -30,7 +41,7 @@
 
 <textarea
 	bind:this={ref}
-	on:keydown={handleKeydown}
+	onkeydown={handleKeydown}
 	bind:value
 	disabled={isLoading}
 	class="relative h-full w-full resize-none rounded-md border-[24px] border-transparent bg-neutral-800 text-base text-neutral-200 outline-none"

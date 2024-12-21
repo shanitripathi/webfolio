@@ -1,47 +1,41 @@
 <script lang="ts">
 	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 
-	export let muted = true;
-	export let src: string;
-	export let shouldPlay = false;
-	export let isNowPlaying = false;
-	export let replayVideo = false;
-	export let optionalClass = '';
+	interface Props {
+		muted?: boolean;
+		src: string;
+		shouldPlay?: boolean;
+		isNowPlaying?: boolean;
+		replayVideo?: boolean;
+		optionalClass?: string;
+	}
 
-	let currentTime = 0;
+	let {
+		muted = true,
+		src,
+		shouldPlay = false,
+		isNowPlaying = false,
+		replayVideo = false,
+		optionalClass = ''
+	}: Props = $props();
+
+	let currentTime = $state(0);
 	let hls: any | undefined = undefined;
-	let paused = true;
-	let videoElement: HTMLVideoElement;
-	let volume = 1;
+	let paused = $state(true);
+	let videoElement: HTMLVideoElement | undefined = $state(undefined);
+	let volume = $state(1);
 	let hasInteracted = true;
 	let fullscreen = false;
-	let ref: HTMLDivElement;
+	let ref: HTMLDivElement | undefined = $state(undefined);
 
 	const dispatch = createEventDispatcher();
-
-	$: if (shouldPlay && videoElement && isNowPlaying) {
-		videoElement.play();
-	} else if (!shouldPlay && videoElement && isNowPlaying) {
-		videoElement.pause();
-	}
-
-	$: {
-		if (currentTime > 60 && isNowPlaying) {
-			dispatch('videoPreviewEnd');
-		}
-	}
 
 	const handleVideoEnd = () => {
 		if (!isNowPlaying) {
 			currentTime = 0;
-			videoElement.play();
+			videoElement?.play();
 		}
 	};
-
-	$: src || replayVideo,
-		(async () => {
-			await initializeHls();
-		})();
 
 	onMount(async () => {
 		await initializeHls();
@@ -119,9 +113,28 @@
 			hls.loadSource(src);
 		});
 	};
+	$effect(() => {
+		if (videoElement && isNowPlaying) {
+			shouldPlay ? videoElement.play() : videoElement.pause();
+		}
+	});
+
+	$effect(() => {
+		if (currentTime > 60 && isNowPlaying) {
+			dispatch('videoPreviewEnd');
+		}
+	});
+
+	$effect(() => {
+		if (src || replayVideo) {
+			(async () => {
+				await initializeHls();
+			})();
+		}
+	});
 </script>
 
-<!-- svelte-ignore a11y-media-has-caption -->
+<!-- svelte-ignore a11y_media_has_caption -->
 <div bind:this={ref}>
 	<video
 		autoplay={true}
@@ -130,7 +143,7 @@
 		bind:currentTime
 		bind:paused
 		bind:volume
-		on:ended={handleVideoEnd}
+		onended={handleVideoEnd}
 		class={`h-full w-full object-cover ${optionalClass}`}
 		controls={true}
 		data-test-id="video-nowPlaying"
@@ -138,5 +151,5 @@
 		playsinline
 		preload="metadata"
 		{src}
-	/>
+	></video>
 </div>

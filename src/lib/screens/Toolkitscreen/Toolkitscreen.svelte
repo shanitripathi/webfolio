@@ -17,9 +17,13 @@
 </script>
 
 <ToolsSection items={stackItems}>
-	<svelte:fragment slot="header">stack</svelte:fragment>
+	{#snippet header()}
+		stack
+	{/snippet}
 </ToolsSection>
 
 <ToolsSection items={toolsItems}>
-	<svelte:fragment slot="header">tools</svelte:fragment>
+	{#snippet header()}
+		tools
+	{/snippet}
 </ToolsSection>

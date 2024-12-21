@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import { createEventDispatcher } from 'svelte';
-	import { DeleteIcon, CrosshairIcon } from 'svelte-feather-icons';
 
-	export let time: string;
-	export let text: string;
-	export let id: string;
+	interface Props {
+		time: string;
+		text: string;
+		id: string;
+		deleteMessage: (id: string) => void;
+	}
 
-	const dispatch = createEventDispatcher();
+	let { time, text, id, deleteMessage }: Props = $props();
 
-	let isHovering = false;
+	let isHovering = $state(false);
 
 	const timeToDisplay = new Date(time).toLocaleString('en-US', {
 		year: '2-digit',
@@ -22,15 +23,15 @@
 </script>
 
 <div
-	on:pointerenter={() => (isHovering = true)}
-	on:pointerleave={() => (isHovering = false)}
+	onpointerenter={() => (isHovering = true)}
+	onpointerleave={() => (isHovering = false)}
 	class="flex items-start gap-2"
 >
 	<span class="relative inline-block whitespace-nowrap text-[10px] font-semibold leading-[1.7rem]"
 		>{timeToDisplay} :
 		{#if isHovering}
 			<button
-				on:pointerup={() => dispatch('deleteMessage', { id })}
+				onpointerup={() => deleteMessage(id)}
 				transition:fade={{ duration: 100 }}
 				class="absolute inset-0 z-[1] flex items-center justify-center bg-main text-sm">🗑</button
 			>

@@ -2,7 +2,11 @@
 	import MessageMeScreen from '$screens/MessageMeScreen/MessageMeScreen.svelte';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const isMessageSent = data.isMessageSent;
 </script>
