@@ -50,7 +50,7 @@
 	};
 </script>
 
-<main class="flex flex-col items-center justify-center h-full">
+<main class="flex h-full flex-col items-center justify-center">
 	<div class="flex flex-col items-center justify-center gap-2">
 		<p class="text-sm">🔮✨ What's the magic word? 🧙‍♂️</p>
 		<form onsubmit={login} class="w-[250px]">

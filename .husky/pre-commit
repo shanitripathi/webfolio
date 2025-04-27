@@ -1,1 +1,13 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+
+#  format files
 pnpm format
+
+# Check if there are any formatting changes
+git diff --exit-code
+if [ $? -ne 0 ]; then
+  # Stage the changes if formatting was applied
+  git add .
+fi

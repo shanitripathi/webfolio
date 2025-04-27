@@ -21,11 +21,9 @@
 	let songName = $derived(currentName || lastName);
 	let href = $derived(currentHref || lastHref);
 
-	let tooltipText = $derived(currentName
-		? 'now playing on spotify'
-		: lastName
-			? 'last played on spotify'
-			: 'nothing playing');
+	let tooltipText = $derived(
+		currentName ? 'now playing on spotify' : lastName ? 'last played on spotify' : 'nothing playing'
+	);
 </script>
 
 <Anchor disabled={!songName} {href} target={'_blank'} {tooltipText} tooltipTop={false}>

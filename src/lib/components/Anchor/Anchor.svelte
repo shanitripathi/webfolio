@@ -5,10 +5,10 @@
 		href?: string;
 		target?: '_blank' | '';
 		isBold?: boolean;
-		sizeClass?: 
-		| `text-[${5 | 6 | 7 | 8 | 9 | 10}px]`
-		| `text-${2 | 3 | 4 | 5 | 6}xl`
-		| `text-${'sm' | 'lg' | 'md' | 'xl' | 'base'}`;
+		sizeClass?:
+			| `text-[${5 | 6 | 7 | 8 | 9 | 10}px]`
+			| `text-${2 | 3 | 4 | 5 | 6}xl`
+			| `text-${'sm' | 'lg' | 'md' | 'xl' | 'base'}`;
 		optionalClass?: string;
 		download?: undefined | string;
 		tooltipText?: string;

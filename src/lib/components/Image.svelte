@@ -19,7 +19,7 @@
 </script>
 
 <img
-	class="absolute object-cover w-full h-full"
+	class="absolute h-full w-full object-cover"
 	{alt}
 	sizes="(max-width: 600px) 100vw, 50vw"
 	srcset="{srcSmall} 600w, {srcRegular} 1400w"

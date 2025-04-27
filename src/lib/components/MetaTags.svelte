@@ -4,7 +4,10 @@
 		description?: string;
 	}
 
-	let { title = 'Shani Tripathi - Developer, Photographer, and a Person', description = "Hey, this is Shani Tripathi's portfolio - Developer, photographer, and a person" }: Props = $props();
+	let {
+		title = 'Shani Tripathi - Developer, Photographer, and a Person',
+		description = "Hey, this is Shani Tripathi's portfolio - Developer, photographer, and a person"
+	}: Props = $props();
 </script>
 
 <svelte:head>
