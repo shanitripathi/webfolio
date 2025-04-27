@@ -16,7 +16,9 @@
 	let { spotifyData = {} }: Props = $props();
 
 	const age = ageCalculator(new Date('1996-01-07'));
-	let unsplashPhotos = $derived($unsplashImageStore ? $unsplashImageStore.slice(0, 6) : $unsplashImageStore);
+	let unsplashPhotos = $derived(
+		$unsplashImageStore ? $unsplashImageStore.slice(0, 6) : $unsplashImageStore
+	);
 </script>
 
 <header class="flex flex-col gap-6 md:flex-row md:items-center">
