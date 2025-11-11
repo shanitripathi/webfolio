@@ -16,6 +16,32 @@
 	</h1>
 
 	<p>On a mission to build products that people love and have some fun along the way!</p>
+
+	<WorkSection>
+		{#snippet heading()}
+			Kitman Labs
+		{/snippet}
+		{#snippet subHeading()}
+			Senior Software Engineer (2024 - present)
+		{/snippet}
+		{#snippet description()}
+			I led several performance optimization initiatives that significantly improved the platform's
+			efficiency, achieving a 40% reduction in initial bundle size, 14-minute faster CI test
+			execution, and 50% faster hot module replacement. I also contributed to the migration of over
+			750 Enzyme tests to Jest, which unblocked the project's upgrade to React 18 and improved
+			long-term maintainability. Beyond technical improvements, I focused on enhancing user
+			experience by implementing sticky filters and redesigning problematic UI sections to reduce
+			friction and improve workflow efficiency.
+			<br />
+			<br />
+			Additionally, I developed an Email Logs interface for product and support teams to monitor email
+			delivery statuses, streamlining issue resolution and reducing back-and-forth with engineering.
+			I also improved developer workflows by introducing GitHub composite actions for automatic review
+			requests and implementing custom ESLint rules to enforce consistent styling practices across the
+			codebase.
+		{/snippet}
+	</WorkSection>
+
 	<WorkSection>
 		{#snippet heading()}
 			Axonista
@@ -45,7 +71,7 @@
 			Chiku
 		{/snippet}
 		{#snippet subHeading()}
-			Frontend Developer(2019 - 2020)
+			Frontend Developer(2019 - 2024)
 		{/snippet}
 		{#snippet description()}
 			I contributed to Chiku, a personal diary app available on Android and iOS. Using HTML, SCSS,
