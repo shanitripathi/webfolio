@@ -8,6 +8,8 @@
 		'xstate/redux-toolkit🏬',
 		'css/scss/styled components/tailwindcss/bootstrap🎨',
 		'node.js🚀',
+		'aws ☁️',
+		'postgresql 🐘',
 		'graphql/rest🚂',
 		'git/github🐙',
 		'figma🎨'

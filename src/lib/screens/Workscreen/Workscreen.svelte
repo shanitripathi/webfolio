@@ -47,7 +47,7 @@
 			Axonista
 		{/snippet}
 		{#snippet subHeading()}
-			Web Developer(2021 - present)
+			Web Developer(2021 - 2024)
 		{/snippet}
 		{#snippet description()}
 			As a web developer, I contributed to several high-profile projects. For an environmental
@@ -88,6 +88,9 @@
 	<div class="md:ml-4">
 		<hr class="my-6 border-neutral-800" />
 		<ul class="md:ml-4">
+			<li>
+				<Anchor isBold={true} target="_blank" href="https://mailchan.app">Mailchan</Anchor>
+			</li>
 			<li>
 				<Anchor isBold={true} target="_blank" href="https://shanitripathi.github.io/days/index.html"
 					>Days</Anchor

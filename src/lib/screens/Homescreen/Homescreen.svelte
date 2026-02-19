@@ -26,9 +26,9 @@
 		<img class="h-full w-full object-cover" src={Profile} alt="profile" />
 	</div>
 	<div class="text-xl">
-		<div class="whitespace-pre-line">
-			<span><Anchor isBold={true} sizeClass="text-xl">hey, I'm shani 👋</Anchor></span> I'm a web developer
-			and tech enthusiast.
+		<div>
+			<span><Anchor isBold={true} sizeClass="text-xl">hey, I'm shani 👋</Anchor></span> I'm a software
+			engineer.
 		</div>
 		<div class="mt-4 flex gap-3">
 			<Anchor href={constants.github} target="_blank" tooltipText="my github"
@@ -53,8 +53,13 @@
 
 <section class="mt-8 flex flex-col gap-3 text-sm text-midtone">
 	<p>
-		Born {age} years ago, I develop websites 💻 and when I'm not doing that, you'll often find me behind
-		the lens, capturing folks around me 📸.
+		Born {age} years ago, I develop webapps 💻(currently building <Anchor
+			isBold={true}
+			sizeClass="text-sm"
+			target="_blank"
+			href="https://mailchan.app">mailchan</Anchor
+		> ✉️) and when I'm not doing that, you'll often find me behind the lens, capturing folks around me
+		📸.
 	</p>
 	<p>
 		I'm also a gym enthusiast 🏋️‍♂️, dedicated to maintaining a healthy lifestyle and staying active
